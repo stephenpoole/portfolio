@@ -1,0 +1,46 @@
+@import 'scss/fonts';
+@import 'scss/variables';
+@import 'scss/mixins';
+@import 'scss/animations';
+
+body {
+    margin: 0;
+    padding: 0;
+    background: $background;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    @import 'scss/normalize';
+    font-family: $miniRegular;
+    font-size: 30px;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: $miniBold;
+        text-transform: uppercase;
+    }
+
+    h3 {
+        line-height: 1em;
+        font-size: 1.8em;
+    }
+
+    em {
+        font-family: $miniItalic;
+    }
+
+    .app-inner {
+        width: 100%;
+        height: 100%;
+        @import 'scss/conditional/index';
+    }
+
+    @import 'scss/components/index';
+    @import 'scss/vendor/index';
+}

@@ -1,0 +1,1 @@
+export const FADE_TRANSITION_TIME = 3000;

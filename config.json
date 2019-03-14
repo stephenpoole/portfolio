@@ -1,0 +1,20 @@
+{
+    "production": {
+        "apiUrl": "/",
+        "imgPath": "/img",
+        "instagram": {
+            "clientId": "993c5718871b4cd48ba35ccd0a50d684",
+            "userId": "3407837654",
+            "accessToken": "3407837654.993c571.394a6da8d5ee47939aa0bc778505581f"
+        }
+    },
+    "development": {
+        "apiUrl": "/",
+        "imgPath": "/img",
+        "instagram": {
+            "clientId": "993c5718871b4cd48ba35ccd0a50d684",
+            "userId": "3407837654",
+            "accessToken": "3407837654.993c571.394a6da8d5ee47939aa0bc778505581f"
+        }
+    }
+}
