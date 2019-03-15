@@ -15,7 +15,8 @@ module.exports = function(env, argv) {
         output: {
             filename: 'app.[hash].js',
             path: path.resolve(__dirname, './dist'),
-            chunkFilename: '[name].js'
+            chunkFilename: '[name].js',
+            publicPath: isDev ? './dist' : '/'
         },
         node: {
             crypto: 'empty',

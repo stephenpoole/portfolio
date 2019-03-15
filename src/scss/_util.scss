@@ -1,0 +1,12 @@
+@import './variables';
+
+.animate-none {
+    -webkit-animation: none !important;
+    -moz-animation: none !important;
+    -o-animation: none !important;
+    animation: none !important;
+}
+
+.inverted {
+    color: $textInverted;
+}

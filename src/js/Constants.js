@@ -1,1 +1,7 @@
-export const FADE_TRANSITION_TIME = 3000;
+import { Config } from './util';
+
+export const Routes = {
+    Home: `${Config.routePrefix}/`,
+    About: `${Config.routePrefix}/about`,
+    Work: `${Config.routePrefix}/work`
+};

@@ -2,19 +2,24 @@
 @import 'scss/variables';
 @import 'scss/mixins';
 @import 'scss/animations';
+@import 'scss/normalize';
+@import 'scss/util';
 
 body {
     margin: 0;
     padding: 0;
-    background: $background;
+}
+
+* {
+    color: $text;
 }
 
 #app {
     width: 100%;
     height: 100%;
-    @import 'scss/normalize';
-    font-family: $miniRegular;
     font-size: 30px;
+    position: relative;
+    z-index: 2;
 
     h1,
     h2,
@@ -22,25 +27,20 @@ body {
     h4,
     h5,
     h6 {
-        font-family: $miniBold;
         text-transform: uppercase;
-    }
-
-    h3 {
-        line-height: 1em;
-        font-size: 1.8em;
-    }
-
-    em {
-        font-family: $miniItalic;
     }
 
     .app-inner {
         width: 100%;
         height: 100%;
-        @import 'scss/conditional/index';
+    }
+
+    .route-container {
+        position: relative;
+        z-index: 2;
     }
 
     @import 'scss/components/index';
     @import 'scss/vendor/index';
+    @import 'scss/conditional/index';
 }
