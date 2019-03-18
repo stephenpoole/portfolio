@@ -1,7 +1,11 @@
 import { Config } from './util';
 
-export const Routes = {
-    Home: `${Config.routePrefix}/`,
-    About: `${Config.routePrefix}/about`,
-    Work: `${Config.routePrefix}/work`
+const RouteNames = {
+    Home: `/`,
+    About: `/about`,
+    Work: `/work`
 };
+
+export const Routes = Object.fromEntries(
+    Object.entries(RouteNames).map(([key, value]) => [key, `${Config.routePrefix}${value}`])
+);

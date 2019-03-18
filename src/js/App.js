@@ -1,5 +1,6 @@
 import React, { useEffect, useState, createContext } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect, Switch } from 'react-router-dom';
+import { Tween, Timeline } from 'react-gsap';
 import { useAsyncEffect } from './hooks';
 import { Routes } from './Constants';
 import { HomeContainer, WorkContainer, AboutContainer, Background } from './components';

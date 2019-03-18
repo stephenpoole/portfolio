@@ -1,0 +1,33 @@
+{
+    "name": "",
+    "title": "",
+    "social": [
+        {
+            "name": "",
+            "image": "",
+            "link": ""
+        },
+        {
+            "name": "",
+            "image": "",
+            "link": ""
+        },
+        {
+            "name": "",
+            "image": "",
+            "link": ""
+        }
+    ],
+    "work": [
+        {
+            "name": "",
+            "shortname": "",
+            "year": 0,
+            "agency": "",
+            "desc": "",
+            "link": "",
+            "media": "",
+            "tech": [""]
+        }
+    ]
+}

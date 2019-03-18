@@ -1,5 +1,6 @@
 import React from 'react';
 import { Transition } from 'react-transition-group';
+import { Tween } from 'react-gsap';
 
 export const SlideTransition = ({ duration, in: inProp, children }) => {
     const defaultStyles = {
