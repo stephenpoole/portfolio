@@ -1,4 +1,7 @@
 .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: inherit;
     height: inherit;
 
@@ -42,7 +45,7 @@
         }
 
         li.menu__navigation-item--selected a {
-            border-right: 2px solid $text;
+            border-right: $line-width solid $text;
         }
     }
 

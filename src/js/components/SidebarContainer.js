@@ -1,9 +1,4 @@
 import React from 'react';
-import { AppData } from '../util';
-import { Sidebar, Menu } from './';
+import { Sidebar } from './';
 
-export const SidebarContainer = () => (
-    <Sidebar>
-        <Menu social={AppData.social} routes={AppData.routes} />
-    </Sidebar>
-);
+export const SidebarContainer = ({ children }) => <Sidebar>{children}</Sidebar>;

@@ -1,10 +1,10 @@
 {
     "production": {
-        "routePrefix": "",
+        "routePrefix": "/",
         "imagePrefix": "/assets/images"
     },
     "development": {
-        "routePrefix": "/portfolio/dist",
-        "imagePrefix": "/portfolio/dist/assets/images"
+        "routePrefix": "/pf/dist",
+        "imagePrefix": "/pf/dist/assets/images"
     }
 }

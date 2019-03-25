@@ -1,6 +1,8 @@
 {
-    "name": "",
-    "title": "",
+    "logo": {
+        "name": "Stephen Poole",
+        "title": "Front-End Developer"
+    },
     "social": [
         {
             "name": "email",

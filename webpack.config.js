@@ -5,9 +5,12 @@ const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const Config = require('./config.json');
 
 module.exports = function(env, argv) {
-    var isDev = argv.mode === 'development';
+    const isDev = argv.mode === 'development';
+    const config = isDev ? Config.development : Config.production;
 
     return {
         entry: ['@babel/polyfill', './src/index.js'],
@@ -116,7 +119,7 @@ module.exports = function(env, argv) {
                                 ident: 'postcss',
                                 plugins: [
                                     postcssPresetEnv({
-                                        browsers: ['last 2 versions', 'ie >= 10']
+                                        browsers: ['last 2 versions', 'ie >= 11']
                                     })
                                 ]
                             }
@@ -154,12 +157,18 @@ module.exports = function(env, argv) {
             new HtmlWebPackPlugin({
                 template: './src/index.html',
                 filename: path.resolve(__dirname, './dist/index.html'),
+                baseUrl: config.routePrefix,
                 inject: true
             }),
             new BundleAnalyzerPlugin({
                 analyzerMode: 'static',
                 openAnalyzer: false
             }),
+            new CopyPlugin([
+                { from: 'src/assets/images', to: 'assets/images' },
+                { from: 'src/assets/videos', to: 'assets/videos' },
+                { from: 'src/.htaccess', to: '' }
+            ]),
             new CleanWebpackPlugin()
         ]
     };
