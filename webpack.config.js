@@ -68,7 +68,10 @@ module.exports = function(env, argv) {
                     query: {
                         presets: [
                             '@babel/preset-react',
-                            ['@babel/preset-env', { targets: 'last 2 versions, ie >= 10' }]
+                            [
+                                '@babel/preset-env',
+                                { targets: 'last 2 versions, ie >= 11', useBuiltIns: 'usage' }
+                            ]
                         ],
                         plugins: [
                             [
@@ -121,13 +124,25 @@ module.exports = function(env, argv) {
                     ]
                 },
                 {
+                    test: /\.(png|jpg|jpeg|gif|svg)$/,
+                    use: [
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                name: '[name].[ext]',
+                                outputPath: '/assets/images/'
+                            }
+                        }
+                    ]
+                },
+                {
                     test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
                     use: [
                         {
                             loader: 'file-loader',
                             options: {
                                 name: '[name].[ext]',
-                                outputPath: 'fonts/'
+                                outputPath: '/assets/fonts/'
                             }
                         }
                     ]

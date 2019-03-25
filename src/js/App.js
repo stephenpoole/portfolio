@@ -1,53 +1,22 @@
-import React, { useEffect, useState, createContext } from 'react';
-import { BrowserRouter as Router, Route, Link, Redirect, Switch } from 'react-router-dom';
-import { Tween, Timeline } from 'react-gsap';
-import { useAsyncEffect } from './hooks';
+import React from 'react';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { Routes } from './Constants';
-import { HomeContainer, WorkContainer, AboutContainer, Background } from './components';
-import { DOM } from './DOM';
-
-export const AppContext = createContext({
-    loaded: false,
-    slideLoaded: false
-});
+import { ContactContainer, WorkContainer, AboutContainer, SidebarContainer } from './components';
 
 export const App = () => {
-    const [loaded, setLoaded] = useState(false);
-    const [slideLoaded, setSlideLoaded] = useState(false);
-
-    useAsyncEffect(
-        async () => {
-            try {
-                const background = DOM.get('.background');
-                await DOM.onAnimationFinished(background);
-                DOM.removeClass(background, 'animate');
-                setLoaded(true);
-                background.remove();
-            } catch (error) {
-                console.error(error);
-            }
-        },
-        () => {},
-        []
-    );
-
-    const appContext = { loaded, setSlideLoaded };
-
     return (
-        <div className="app-inner">
-            <AppContext.Provider value={appContext}>
-                <div className="route-container">
-                    <Router>
-                        <Switch>
-                            <Route path={Routes.Work} component={WorkContainer} />
-                            <Route path={Routes.About} component={AboutContainer} />
-                            <Route exact path={Routes.Home} component={HomeContainer} />
-                            <Redirect to={Routes.Home} />
-                        </Switch>
-                    </Router>
+        <Router>
+            <>
+                <SidebarContainer />
+                <div className="content">
+                    <Switch>
+                        <Route path={Routes.Work} component={WorkContainer} />
+                        <Route exact path={Routes.Contact} component={ContactContainer} />
+                        <Route path={Routes.About} component={AboutContainer} />
+                        <Redirect to={Routes.About} />
+                    </Switch>
                 </div>
-                {loaded && <Background animate={!slideLoaded} />}
-            </AppContext.Provider>
-        </div>
+            </>
+        </Router>
     );
 };

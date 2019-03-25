@@ -3,19 +3,38 @@
     "title": "",
     "social": [
         {
-            "name": "",
-            "image": "",
-            "link": ""
+            "name": "email",
+            "image": "/icon-mail.svg",
+            "link": "mailto:me@stephen.work"
         },
         {
-            "name": "",
-            "image": "",
-            "link": ""
+            "name": "github",
+            "image": "/icon-github.svg",
+            "link": "https://github.com/stephenpoole"
         },
         {
-            "name": "",
-            "image": "",
-            "link": ""
+            "name": "linkedin",
+            "image": "/icon-linkedin.svg",
+            "link": "https://www.linkedin.com/in/stephenwpoole"
+        },
+        {
+            "name": "twitter",
+            "image": "/icon-twitter.svg",
+            "link": "https://twitter.com/poolestephen"
+        }
+    ],
+    "routes": [
+        {
+            "path": "/about",
+            "name": "About"
+        },
+        {
+            "path": "/work",
+            "name": "Work"
+        },
+        {
+            "path": "/contact",
+            "name": "Contact"
         }
     ],
     "work": [

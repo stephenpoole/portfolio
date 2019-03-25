@@ -1,0 +1,58 @@
+.menu {
+    width: inherit;
+    height: inherit;
+
+    .menu__logo {
+        position: relative;
+        width: inherit;
+        writing-mode: vertical-rl;
+        display: table;
+        transform: rotate(180deg);
+        padding: 15px 0;
+
+        .menu__logo-inner {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        h3,
+        p {
+            white-space: nowrap;
+            text-align: right;
+            padding: 0 1px;
+        }
+    }
+
+    ul.menu__navigation {
+        position: relative;
+
+        li {
+            writing-mode: vertical-rl;
+            display: table;
+            transform: rotate(180deg);
+            width: 100%;
+        }
+
+        li a {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 30px 0;
+            border-right: 2px solid $background;
+            border-left: 2px solid $background;
+        }
+
+        li.menu__navigation-item--selected a {
+            border-right: 2px solid $text;
+        }
+    }
+
+    ul.menu__social {
+        position: absolute;
+        bottom: 0;
+        width: inherit;
+
+        img {
+            width: 100%;
+        }
+    }
+}

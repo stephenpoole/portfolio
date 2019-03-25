@@ -1,11 +1,4 @@
-import { Config } from './util';
+import * as Util from './util';
 
-const RouteNames = {
-    Home: `/`,
-    About: `/about`,
-    Work: `/work`
-};
-
-export const Routes = Object.fromEntries(
-    Object.entries(RouteNames).map(([key, value]) => [key, `${Config.routePrefix}${value}`])
-);
+const arr = Util.AppData.routes.map(({ name, path }) => [name, Util.Route.fullpath(path)]);
+export const Routes = Util.Object.fromEntries(arr);

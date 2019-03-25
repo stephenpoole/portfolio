@@ -1,37 +1,22 @@
 import React from 'react';
-import { Tween, SplitLetters } from 'react-gsap';
-
-const LetterAnimation = ({ children }) => (
-    <Tween staggerFrom={{ y: '-5px' }} stagger={0.5} duration={0.3} ease="Elastic.easeOut">
-        <SplitLetters>{children}</SplitLetters>
-    </Tween>
-);
 
 export const WorkItem = ({ name, shortname, year, agency, desc, link, tech }) => (
     <div className="work__item">
         <div>
             <h3>Project</h3>
-            <LetterAnimation>
-                <p>{name}</p>
-            </LetterAnimation>
+            <p>{name}</p>
         </div>
         <div>
             <h3>Agency</h3>
-            <LetterAnimation>
-                <p>{agency}</p>
-            </LetterAnimation>
+            <p>{agency}</p>
         </div>
         <div>
             <h3>Desc</h3>
-            <LetterAnimation>
-                <p>{desc}</p>
-            </LetterAnimation>
+            <p>{desc}</p>
         </div>
         <div>
             <h3>Tech</h3>
-            <LetterAnimation>
-                <p>{tech.join(', ')}</p>
-            </LetterAnimation>
+            <p>{tech.join(', ')}</p>
         </div>
         <div>
             <a href={link} target="_blank" rel="nofollow noreferrer">

@@ -6,4 +6,4 @@ export class AppDataClass {
     }
 }
 
-export const AppData = new DataClass();
+export const AppData = new AppDataClass();
