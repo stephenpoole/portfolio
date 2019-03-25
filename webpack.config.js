@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const postcssPresetEnv = require('postcss-preset-env');
 const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -107,26 +106,6 @@ module.exports = function(env, argv) {
                     }
                 },
                 {
-                    test: /\.scss$/,
-                    use: [
-                        'style-loader',
-                        { loader: 'css-loader', options: { importLoaders: 1 } },
-                        'sass-loader',
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                sourceMap: isDev ? 'inline' : false,
-                                ident: 'postcss',
-                                plugins: [
-                                    postcssPresetEnv({
-                                        browsers: ['last 2 versions', 'ie >= 11']
-                                    })
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
                     test: /\.(png|jpg|jpeg|gif|svg)$/,
                     use: [
                         {
@@ -165,8 +144,7 @@ module.exports = function(env, argv) {
                 openAnalyzer: false
             }),
             new CopyPlugin([
-                { from: 'src/assets/images', to: 'assets/images' },
-                { from: 'src/assets/videos', to: 'assets/videos' },
+                { from: 'src/assets', to: 'assets' },
                 { from: 'src/.htaccess', to: '' }
             ]),
             new CleanWebpackPlugin()
