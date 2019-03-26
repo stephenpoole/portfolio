@@ -144,7 +144,9 @@ module.exports = function(env, argv) {
                 openAnalyzer: false
             }),
             new CopyPlugin([
-                { from: 'src/assets', to: 'assets' },
+                { from: 'src/assets/fonts', to: 'assets/fonts' },
+                { from: 'src/assets/images', to: 'assets/images' },
+                { from: 'src/assets/videos', to: 'assets/videos' },
                 { from: 'src/.htaccess', to: '' }
             ]),
             new CleanWebpackPlugin()

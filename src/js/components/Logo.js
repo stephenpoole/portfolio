@@ -18,14 +18,14 @@ const LogoInner = styled.div`
     p {
         white-space: nowrap;
         text-align: right;
-        padding: 0 1px;
+        padding: 0 4px;
     }
 `;
 
 export const Logo = ({ name, title }) => (
     <LogoWrapper>
         <LogoInner>
-            <h3>{name}</h3>
+            <h1>{name}</h1>
             <p>
                 <strong>{title}</strong>
             </p>

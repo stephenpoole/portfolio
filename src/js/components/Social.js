@@ -11,12 +11,16 @@ const SocialWrapper = styled.ul`
 
 const SocialItem = styled.li``;
 
+const StyledImage = styled(Image)`
+    background-size: 100% 100%;
+`;
+
 export const Social = ({ items }) => (
     <SocialWrapper>
         {Object.values(items).map(({ image, link, name }) => (
             <SocialItem key={name}>
                 <A href={link}>
-                    <Image src={image} />
+                    <StyledImage src={image} />
                 </A>
             </SocialItem>
         ))}
