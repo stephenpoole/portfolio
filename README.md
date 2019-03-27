@@ -1,3 +1,3 @@
 # portfolio
 
-Portfolio of Stephen Poole
+The portfolio of Stephen Poole.
