@@ -3,10 +3,10 @@ export enum Environments {
     Development = 'development'
 }
 
-const env: Environments = process.env.NODE_ENV;
+const env: Environments = process.env.NODE_ENV! as Environments;
 
 export class Env {
-    public static is(environment): boolean {
+    public static is(environment: Environments): boolean {
         return environment === this.get();
     }
 

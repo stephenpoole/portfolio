@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import { A } from './index';
+import { ISocialItem } from '../util';
 
 const SocialWrapper = styled.ul`
     position: absolute;
@@ -15,10 +16,14 @@ const SocialItem = styled.li`
     }
 `;
 
-export const Social = ({ items }) => (
+interface Props {
+    items: ISocialItem[];
+}
+
+export const Social: React.FC<Props> = ({ items }) => (
     <SocialWrapper>
-        {Object.values(items).map(({ component, link, name }) => {
-            const Svg = styled(component)`
+        {Object.values(items).map(({ Component, link, name }) => {
+            const Svg = styled(Component)`
                 width: 28px;
                 margin: 0 auto;
                 padding: 17px 0;

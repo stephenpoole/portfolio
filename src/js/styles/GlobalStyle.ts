@@ -2,7 +2,7 @@ import { createGlobalStyle, GlobalStyleComponent } from 'styled-components';
 import { theme } from './index';
 import { Config } from '../util/index';
 
-export const GlobalStyle: GlobalStyleComponent = createGlobalStyle`
+export const GlobalStyle: GlobalStyleComponent<> = createGlobalStyle`
     @font-face {
         font-family: AbrilFatface-Regular;
         font-style: normal;

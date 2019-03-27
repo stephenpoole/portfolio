@@ -1,7 +1,7 @@
 import { Config } from './index';
 
 export class Route {
-    public static matches(location: string, path: string) {
+    public static matches(location: Location, path: string) {
         return location.pathname === path || location.pathname === this.fullpath(path);
     }
 

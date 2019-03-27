@@ -2,7 +2,7 @@ export { Image } from './Image';
 export { A } from './A';
 
 export { Title, StyledTitle } from './Title';
-export { Svg } from './Svg';
+export { Github, LinkedIn, Mail, Twitter } from './Svg';
 export { Book } from './Book';
 export { Page } from './Page';
 export { Menu } from './Menu';

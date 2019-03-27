@@ -1,10 +1,14 @@
 import { useEffect } from 'react';
 
-export const useAsyncEffect = (effect, destroy, inputs) => {
+export const useAsyncEffect = (
+    effect: React.EffectCallback,
+    destroy: Function,
+    deps: ReadonlyArray<any> | undefined
+) => {
     useEffect(() => {
-        let result;
-        effect().then(value => (result = value));
+        let result: unknown;
+        effect().then((value: unknown) => (result = value));
 
         return () => destroy(result);
-    }, inputs);
+    }, deps);
 };

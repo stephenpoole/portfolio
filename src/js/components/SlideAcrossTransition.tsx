@@ -3,8 +3,15 @@ import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import * as Util from '../util/index';
 
-export const SlideAcrossTransition = props => {
-    const { children, key, timeout = 400, easing = 'ease-in-out' } = props;
+interface Props {
+    children?: JSX.Element | JSX.Element;
+    timeout?: number;
+    easing?: string;
+    in?: boolean;
+}
+
+export const SlideAcrossTransition: React.FC<Props> = props => {
+    const { children, timeout = 400, easing = 'ease-in-out' } = props;
     const name = `slide-across-${Util.String.random(6)}`;
     const Container = styled.div`
         & {
@@ -33,13 +40,7 @@ export const SlideAcrossTransition = props => {
     `;
 
     return (
-        <CSSTransition
-            key={key}
-            in={props.in}
-            classNames={name}
-            timeout={timeout}
-            unmountOnExit={true}
-        >
+        <CSSTransition in={props.in} classNames={name} timeout={timeout} unmountOnExit={true}>
             <Container>{children}</Container>
         </CSSTransition>
     );

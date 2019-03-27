@@ -1,7 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Image, A, Logo, Navigation, Social } from './index';
+import styled, { StyledComponent } from 'styled-components';
 import { withRouter, Link } from 'react-router-dom';
+import { Image, A, Logo, Navigation, Social } from './index';
+import { ISocialItem, IRouteItem, IInfo } from '../util';
 
 const MenuWrapper = styled.div`
     position: fixed;
@@ -11,7 +12,13 @@ const MenuWrapper = styled.div`
     height: inherit;
 `;
 
-export const Menu = ({ social, routes, info }) => (
+interface Props {
+    social: ISocialItem[];
+    routes: IRouteItem[];
+    info: IInfo;
+}
+
+export const Menu: React.FC<Props> = ({ social, routes, info }) => (
     <MenuWrapper>
         <Logo {...info} />
         <Navigation items={routes} />

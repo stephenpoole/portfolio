@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 
 const LogoWrapper = styled.div`
     position: relative;
@@ -21,7 +21,12 @@ const LogoInner = styled.div`
     }
 `;
 
-export const Logo = ({ name, title }) => (
+interface Props {
+    name: string;
+    title: string;
+}
+
+export const Logo: React.FC<Props> = ({ name, title }) => (
     <LogoWrapper>
         <LogoInner>
             <h1>{name}</h1>

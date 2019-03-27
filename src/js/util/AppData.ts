@@ -12,14 +12,14 @@ export interface IInfo {
 
 export interface ISocialItem {
     name: string;
-    component: React.Component;
-    email: string;
+    Component: new (props: any) => JSX.Element;
+    link: string;
 }
 
 export interface IRouteItem {
     path: string;
     name: string;
-    component: React.Component;
+    Component: new (props: any) => JSX.Element;
 }
 
 export interface IWorkItem {
@@ -50,22 +50,22 @@ const data: IAppData = {
     social: [
         {
             name: 'email',
-            component: Svg.Mail,
+            Component: Svg.Mail,
             link: 'mailto:me@stephen.work'
         },
         {
             name: 'github',
-            component: Svg.Github,
+            Component: Svg.Github,
             link: 'https://github.com/stephenpoole'
         },
         {
             name: 'linkedin',
-            component: Svg.LinkedIn,
+            Component: Svg.LinkedIn,
             link: 'https://www.linkedin.com/in/stephenwpoole'
         },
         {
             name: 'twitter',
-            component: Svg.Twitter,
+            Component: Svg.Twitter,
             link: 'https://twitter.com/poolestephen'
         }
     ],
@@ -112,6 +112,12 @@ const data: IAppData = {
 };
 
 export class AppDataClass implements IAppData {
+    public info: IInfo;
+    public social: ISocialItem[];
+    public routes: IRouteItem[];
+    public skills: string[];
+    public work: IWorkItem[];
+
     public constructor({ info, social, routes, skills, work }: IAppData) {
         this.info = info;
         this.social = social;

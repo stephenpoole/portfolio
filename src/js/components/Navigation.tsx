@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { Config, Route } from '../util/index';
+import styled, { StyledComponent } from 'styled-components';
+import { Config, Route, IRouteItem } from '../util/index';
 
 const NavigationWrapper = styled.ul`
     position: relative;
@@ -14,10 +14,11 @@ const NavigationItem = styled.li`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-right: ${({ theme, selected }) =>
-        selected
+    border-right: ${({ theme, selected }) => {
+        return selected
             ? `${theme.misc.lineWidth}px solid ${theme.color.text}`
-            : `${theme.misc.lineWidth}px solid ${theme.color.background}`};
+            : `${theme.misc.lineWidth}px solid ${theme.color.background}`;
+    }}
     border-left: ${({ theme }) => `${theme.misc.lineWidth}px solid ${theme.color.background}`};
 `;
 
@@ -33,7 +34,12 @@ const StyledSpan = styled.span`
     vertical-align: middle;
 `;
 
-export const Navigation = withRouter(({ items, location }) => (
+interface Props {
+    items: IRouteItem[];
+    location: string;
+}
+
+export const Navigation: React.FC<Props> = withRouter(({ items, location }) => (
     <NavigationWrapper>
         {Object.values(items).map(({ path, name }) => {
             const isSelected = Route.matches(location, path);

@@ -6,6 +6,7 @@ export const LoadableWorkComponent = Loadable({
     loading: () => null,
     render: (loaded, props) => {
         const Component = loaded.Work;
+        Component.displayName = 'LoadableWorkComponent';
         return <Component {...props} />;
     }
 });

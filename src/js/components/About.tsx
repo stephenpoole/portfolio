@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import { A, StyledTitle, Page, ContentSection } from './index';
 import { AppData } from '../util/index';
 
@@ -7,7 +7,7 @@ const Wrapper = styled.div`
     padding: 140px 150px;
 `;
 
-export const About = ({}) => (
+export const About: React.FC<{}> = () => (
     <Page>
         <StyledTitle visible={76}>About</StyledTitle>
         <Wrapper>

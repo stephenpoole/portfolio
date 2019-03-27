@@ -1,4 +1,8 @@
 import React from 'react';
 import { Sidebar } from './index';
 
-export const SidebarContainer = ({ children }) => <Sidebar>{children}</Sidebar>;
+interface Props {
+    children?: JSX.Element | JSX.Element;
+}
+
+export const SidebarContainer: React.FC<Props> = ({ children }) => <Sidebar>{children}</Sidebar>;

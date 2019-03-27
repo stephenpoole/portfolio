@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 
 export const SidebarWrapper = styled.div`
     float: left;
@@ -7,6 +7,11 @@ export const SidebarWrapper = styled.div`
     width: 100px;
 `;
 
-export const Sidebar = ({ children, className }) => (
+interface Props {
+    children?: JSX.Element | JSX.Element;
+    className?: string;
+}
+
+export const Sidebar: React.FC<Props> = ({ children, className }) => (
     <SidebarWrapper className={className}>{children}</SidebarWrapper>
 );

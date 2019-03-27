@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 
 const TitleText = styled.h1`
     font-family: ${({ theme }) => theme.font.sans};
@@ -24,7 +24,13 @@ const TitleTextWrapper = styled.div`
     overflow: hidden;
 `;
 
-export const Title = ({ children, visible, className }) => (
+interface Props {
+    children?: JSX.Element | JSX.Element;
+    visible?: number;
+    classNane?: string;
+}
+
+export const Title: React.FC<Props> = ({ children, visible = 100, className }) => (
     <TitleWrapper className={className}>
         <TitleTextWrapper visible={visible}>
             <TitleText>{children}</TitleText>

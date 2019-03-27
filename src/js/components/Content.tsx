@@ -1,5 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
+
+interface Props {
+    className?: string;
+    children?: JSX.Element | JSX.Element;
+}
 
 export const ContentWrapper = styled.div`
     float: left;
@@ -8,6 +13,6 @@ export const ContentWrapper = styled.div`
     width: calc(100% - 100px);
 `;
 
-export const Content = ({ children, className }) => (
+export const Content: React.FC<Props> = ({ children, className }) => (
     <ContentWrapper className={className}>{children}</ContentWrapper>
 );

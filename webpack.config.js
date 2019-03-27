@@ -1,29 +1,26 @@
 const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
-const Config = require('./config.json');
+const config = require('./config.json');
 
 const styledComponentsTransformer = createStyledComponentsTransformer();
 
 module.exports = function(env, argv) {
     const isDev = argv.mode === 'development';
-    const config = isDev ? Config.development : Config.production;
     const plugins = [
-        new AsyncChunkNames(),
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            openAnalyzer: false
+        }),
         new HtmlWebPackPlugin({
             template: './src/index.html',
             filename: path.resolve(__dirname, './dist/index.html'),
             baseUrl: config.routePrefix,
             inject: true
-        }),
-        new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
-            openAnalyzer: false
         }),
         new CopyPlugin([
             { from: 'src/assets/fonts', to: 'assets/fonts' },
@@ -37,21 +34,16 @@ module.exports = function(env, argv) {
     }
 
     return {
-        entry: ['./src/index.tsx'],
-        devtool: isDev ? 'source-map' : false,
+        entry: './src/index.tsx',
         output: {
             filename: 'app.[hash].js',
-            path: path.resolve(__dirname, './dist'),
+            path: __dirname + '/dist',
             chunkFilename: '[name].js',
             publicPath: isDev ? './dist' : '/'
         },
+        devtool: 'source-map',
         resolve: {
-            extensions: ['.ts', '.tsx', '.js', '.jsx']
-        },
-        node: {
-            crypto: 'empty',
-            dns: 'empty',
-            net: 'empty'
+            extensions: ['.ts', '.tsx', '.js', '.json']
         },
         optimization: {
             minimizer: [
@@ -70,21 +62,6 @@ module.exports = function(env, argv) {
                         name: 'app.vendor',
                         chunks: 'initial',
                         priority: 20
-                    },
-                    vendorAsync: {
-                        test: /[\\/]node_modules[\\/]/,
-                        minChunks: 2,
-                        chunks: 'async',
-                        priority: 0,
-                        name: 'app.vendor.async'
-                    },
-                    common: {
-                        name: 'app.common',
-                        minChunks: 2,
-                        chunks: 'async',
-                        priority: 10,
-                        reuseExistingChunk: true,
-                        enforce: true
                     }
                 }
             }
@@ -92,7 +69,7 @@ module.exports = function(env, argv) {
         module: {
             rules: [
                 {
-                    test: /\.(t|j)sx?$/,
+                    test: /\.tsx?$/,
                     use: [
                         {
                             loader: 'ts-loader',

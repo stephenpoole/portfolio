@@ -1,11 +1,8 @@
-import { AppData, IRouteItem } from './util/AppData';
+import { AppData, IRouteItem, Route } from './util/index';
 
 interface IRoute {
     [key: string]: string;
 }
 
-const arr = Util.AppData.routes.map(({ name, path }: IRouteItem) => [
-    name,
-    Util.Route.fullpath(path)
-]);
-export const Routes: IRoute = Util.Object.fromEntries(arr);
+const arr = AppData.routes.map(({ name, path }: IRouteItem) => [name, Route.fullpath(path)]);
+export const Routes: IRoute = Object.fromEntries(arr);

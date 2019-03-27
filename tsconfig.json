@@ -7,15 +7,24 @@
         "noImplicitReturns": true,
         "noImplicitAny": true,
         "noUnusedLocals": false,
-        "module": "es6",
+        "module": "esnext",
         "moduleResolution": "node",
-        "lib": ["es5", "es2018", "dom"],
+        "lib": ["es5", "esnext", "dom"],
         "target": "es5",
         "allowJs": false,
         "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
         "jsx": "react"
     },
-    "include": ["./src/"],
+    "awesomeTypescriptLoaderOptions": {
+        "useBabel": true,
+        "useWebpackText": true,
+        "useCache": false,
+        "doTypeCheck": true,
+        "forkChecker": true
+    },
+    "include": ["./src/**/*"],
     "exclude": ["node_modules"],
     "compileOnSave": true
 }

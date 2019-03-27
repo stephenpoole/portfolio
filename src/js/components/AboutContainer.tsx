@@ -6,10 +6,9 @@ export const LoadableAboutComponent = Loadable({
     loading: () => null,
     render: (loaded, props) => {
         const Component = loaded.About;
+        Component.displayName = 'LoadableAboutComponent';
         return <Component {...props} />;
     }
 });
 
-export const AboutContainer = () => {
-    return <LoadableAboutComponent />;
-};
+export const AboutContainer = () => <LoadableAboutComponent />;

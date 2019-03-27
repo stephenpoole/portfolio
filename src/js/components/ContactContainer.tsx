@@ -6,10 +6,9 @@ export const LoadableContactComponent = Loadable({
     loading: () => null,
     render: (loaded, props) => {
         const Component = loaded.Contact;
-        return <Component {...props} />;
+        Component.displayName = 'LoadableContactComponent';
+        return <Component {...props} displayName={LoadableContactComponent} />;
     }
 });
 
-export const ContactContainer = () => {
-    return <LoadableContactComponent />;
-};
+export const ContactContainer = () => <LoadableContactComponent />;
