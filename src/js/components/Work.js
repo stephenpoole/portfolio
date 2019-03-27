@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import { AppData } from '../util';
-import { WorkItem } from './WorkItem';
+import { WorkItem, Page } from './';
 
 const data = AppData.work;
 
@@ -38,10 +38,10 @@ export const Work = () => {
     );
 
     return (
-        <div className="work">
+        <Page>
             <WorkMedia link={state.media} />
             <WorkItem {...state.display} dispatch={dispatch} />
             <WorkNavigator index={state.index} totalItems={state.totalItems} dispatch={dispatch} />
-        </div>
+        </Page>
     );
 };

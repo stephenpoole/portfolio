@@ -20,8 +20,8 @@ const StyledLink = styled(Link)`
     padding: 30px 0;
     border-right: ${({ theme, selected }) =>
         selected
-            ? `${({ theme }) => theme.misc.lineWidth}px solid ${({ theme }) => theme.color.text}`
-            : `2px solid ${({ theme }) => theme.color.background}`};
+            ? `${theme.misc.lineWidth}px solid ${theme.color.text}`
+            : `${theme.misc.lineWidth}px solid ${theme.color.background}`};
     border-left: 2px solid ${({ theme }) => theme.color.background};
 `;
 

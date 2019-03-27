@@ -29,11 +29,12 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        color: ${theme.color.text}
+        color: ${theme.color.text};
         margin: 0;
         padding: 0;
-        font-family: ${theme.font.sansSerif};
+        font-family: ${theme.font.sans};
         font-size: 12pt;
+        overflow: hidden;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -71,27 +72,27 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h1 {
-        font-size: 2${theme.font.unit};
+        font-size: 2em;
     }
 
     h2 {
-        font-size: 1.5${theme.font.unit};
+        font-size: 1.5em;
     }
 
     h3 {
-        font-size: 1.17${theme.font.unit};
+        font-size: 1.17em;
     }
 
     h4 {
-        font-size: 1${theme.font.unit};
+        font-size: 1em;
     }
 
     h5 {
-        font-size: 0.83${theme.font.unit};
+        font-size: 0.83em;
     }
 
     h6 {
-        font-size: 0.67${theme.font.unit};
+        font-size: 0.67em;
     }
 
     li {

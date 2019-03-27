@@ -1,12 +1,13 @@
+import { Color } from '../util';
+
 export const theme = {
     color: {
-        text: '#131313',
+        text: Color.generate('#a53b3b'),
         background: '#ffffff'
     },
     font: {
         size: 16,
-        unit: 'em',
-        sansSerif: 'San Francisco Sans, Helvetica Neue, Helvetica, Arial, sans-serif',
+        sans: 'San Francisco Sans, Helvetica Neue, Helvetica, Arial, sans-serif',
         serif: 'AbrilFatface-Regular, Times New Roman, serif'
     },
     media: {

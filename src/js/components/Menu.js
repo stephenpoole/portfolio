@@ -11,9 +11,9 @@ const MenuWrapper = styled.div`
     height: inherit;
 `;
 
-export const Menu = ({ social, routes, logo }) => (
+export const Menu = ({ social, routes, info }) => (
     <MenuWrapper>
-        <Logo {...logo} />
+        <Logo {...info} />
         <Navigation items={routes} />
         <Social items={social} />
     </MenuWrapper>

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { Normalize } from 'styled-normalize';
-import { AppData } from './util';
+import * as Util from './util';
 import { theme, GlobalStyle } from './styles';
 import { Routes } from './Constants';
 import {
@@ -11,7 +11,9 @@ import {
     AboutContainer,
     SidebarContainer,
     ContentContainer,
-    Menu
+    Menu,
+    Book,
+    SlideAcrossTransition
 } from './components';
 
 const AppWrapper = styled.div`
@@ -28,15 +30,33 @@ export const App = () => (
             <Router>
                 <>
                     <SidebarContainer>
-                        <Menu social={AppData.social} routes={AppData.routes} logo={AppData.logo} />
+                        <Menu
+                            social={Util.AppData.social}
+                            routes={Util.AppData.routes}
+                            info={Util.AppData.info}
+                        />
                     </SidebarContainer>
                     <ContentContainer>
-                        <Switch>
-                            <Route path={Routes.Work} component={WorkContainer} />
-                            <Route path={Routes.Contact} component={ContactContainer} />
-                            <Route path={Routes.About} component={AboutContainer} />
-                            <Redirect to={Routes.About} />
-                        </Switch>
+                        <Book>
+                            {Util.AppData.routes.map(({ path, Component }) => {
+                                const fullpath = Util.Route.fullpath(path);
+                                return (
+                                    <Route key={fullpath} exact path={fullpath}>
+                                        {({ match }) => (
+                                            <SlideAcrossTransition in={match !== null}>
+                                                <Component />
+                                            </SlideAcrossTransition>
+                                        )}
+                                    </Route>
+                                );
+                            })}
+                            <Switch>
+                                <Route path={Routes.Work} />
+                                <Route path={Routes.Contact} />
+                                <Route path={Routes.About} />
+                                <Redirect to={Routes.About} />
+                            </Switch>
+                        </Book>
                     </ContentContainer>
                 </>
             </Router>

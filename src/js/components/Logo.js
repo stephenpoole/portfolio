@@ -7,7 +7,7 @@ const LogoWrapper = styled.div`
     writing-mode: vertical-rl;
     display: table;
     transform: rotate(180deg);
-    padding: 15px 0;
+    padding: 20px 0;
 `;
 
 const LogoInner = styled.div`

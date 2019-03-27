@@ -10,6 +10,28 @@ const Config = require('./config.json');
 module.exports = function(env, argv) {
     const isDev = argv.mode === 'development';
     const config = isDev ? Config.development : Config.production;
+    const plugins = [
+        new AsyncChunkNames(),
+        new HtmlWebPackPlugin({
+            template: './src/index.html',
+            filename: path.resolve(__dirname, './dist/index.html'),
+            baseUrl: config.routePrefix,
+            inject: true
+        }),
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            openAnalyzer: false
+        }),
+        new CopyPlugin([
+            { from: 'src/assets/fonts', to: 'assets/fonts' },
+            { from: 'src/assets/images', to: 'assets/images' },
+            { from: 'src/assets/videos', to: 'assets/videos' },
+            { from: 'src/.htaccess', to: '' }
+        ])
+    ];
+    if (!isDev) {
+        plugins.push(new CleanWebpackPlugin());
+    }
 
     return {
         entry: ['@babel/polyfill', './src/index.js'],
@@ -131,25 +153,6 @@ module.exports = function(env, argv) {
                 }
             ]
         },
-        plugins: [
-            new AsyncChunkNames(),
-            new HtmlWebPackPlugin({
-                template: './src/index.html',
-                filename: path.resolve(__dirname, './dist/index.html'),
-                baseUrl: config.routePrefix,
-                inject: true
-            }),
-            new BundleAnalyzerPlugin({
-                analyzerMode: 'static',
-                openAnalyzer: false
-            }),
-            new CopyPlugin([
-                { from: 'src/assets/fonts', to: 'assets/fonts' },
-                { from: 'src/assets/images', to: 'assets/images' },
-                { from: 'src/assets/videos', to: 'assets/videos' },
-                { from: 'src/.htaccess', to: '' }
-            ]),
-            new CleanWebpackPlugin()
-        ]
+        plugins
     };
 };
