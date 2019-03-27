@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { A, StyledTitle, Page, ContentSection } from './';
-import { AppData } from '../util';
+import { A, StyledTitle, Page, ContentSection } from './index';
+import { AppData } from '../util/index';
 
 const Wrapper = styled.div`
     padding: 140px 150px;

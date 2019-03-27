@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Config, Route } from '../util';
+import { Config, Route } from '../util/index';
 
 const NavigationWrapper = styled.ul`
     position: relative;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StyledTitle, Page } from './';
+import { StyledTitle, Page } from './index';
 
 const Wrapper = styled.div`
     padding: 140px 150px;

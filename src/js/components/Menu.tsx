@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Image, A, Logo, Navigation, Social } from './';
+import { Image, A, Logo, Navigation, Social } from './index';
 import { withRouter, Link } from 'react-router-dom';
 
 const MenuWrapper = styled.div`

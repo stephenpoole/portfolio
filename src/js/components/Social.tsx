@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { A } from './';
+import { A } from './index';
 
 const SocialWrapper = styled.ul`
     position: absolute;

@@ -1,5 +1,5 @@
 export class StringClass {
-    static random(length = 1) {
+    public static random(length = 1): string {
         return Math.random()
             .toString(36)
             .replace(/[^a-z]+/g, '')

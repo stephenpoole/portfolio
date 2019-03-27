@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
-import * as Util from '../util';
+import * as Util from '../util/index';
 
 export const SlideAcrossTransition = props => {
     const { children, key, timeout = 400, easing = 'ease-in-out' } = props;

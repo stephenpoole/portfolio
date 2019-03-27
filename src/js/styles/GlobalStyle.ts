@@ -1,8 +1,8 @@
-import { createGlobalStyle } from 'styled-components';
-import { theme } from './';
-import { Config } from '../util';
+import { createGlobalStyle, GlobalStyleComponent } from 'styled-components';
+import { theme } from './index';
+import { Config } from '../util/index';
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle: GlobalStyleComponent = createGlobalStyle`
     @font-face {
         font-family: AbrilFatface-Regular;
         font-style: normal;

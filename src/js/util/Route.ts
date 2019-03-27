@@ -1,11 +1,11 @@
-import { Config } from './';
+import { Config } from './index';
 
 export class Route {
-    static matches(location, path) {
+    public static matches(location: string, path: string) {
         return location.pathname === path || location.pathname === this.fullpath(path);
     }
 
-    static fullpath(path) {
+    public static fullpath(path: string): string {
         return `${Config.routePrefix}${path}`;
     }
 }

@@ -1,6 +1,21 @@
 {
     "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "strictNullChecks": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": false,
+        "module": "es6",
+        "moduleResolution": "node",
+        "lib": ["es5", "es2018", "dom"],
+        "target": "es5",
+        "allowJs": false,
         "experimentalDecorators": true,
-        "allowJs": true
-    }
+        "jsx": "react"
+    },
+    "include": ["./src/"],
+    "exclude": ["node_modules"],
+    "compileOnSave": true
 }

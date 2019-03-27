@@ -1,6 +1,34 @@
-import { Color } from '../util';
+import { Color } from '../util/index';
 
-export const theme = {
+interface IColor {
+    text: string;
+    background: string;
+}
+
+interface IFont {
+    size: number;
+    sans: string;
+    serif: string;
+}
+
+interface IMedia {
+    phone: string;
+    tablet: string;
+    desktop: string;
+}
+
+interface IMisc {
+    lineWidth: number;
+}
+
+export interface ITheme {
+    color: IColor;
+    font: IFont;
+    media: IMedia;
+    misc: IMisc;
+}
+
+export const theme: ITheme = {
     color: {
         text: Color.generate('#a53b3b'),
         background: '#ffffff'

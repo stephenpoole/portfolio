@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Config } from '../util';
+import { Config } from '../util/index';
 
 const StyledImg = styled.img`
     width: 100%;

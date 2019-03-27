@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
-import { AppData } from '../util';
-import { WorkItem, Page } from './';
+import { AppData } from '../util/index';
+import { WorkItem, Page } from './index';
 
 const data = AppData.work;
 
