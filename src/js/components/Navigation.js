@@ -9,20 +9,28 @@ const NavigationWrapper = styled.ul`
 
 const NavigationItem = styled.li`
     writing-mode: vertical-rl;
-    display: table;
     transform: rotate(180deg);
     width: 100%;
-`;
-
-const StyledLink = styled(Link)`
-    display: table-cell;
-    vertical-align: middle;
-    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-right: ${({ theme, selected }) =>
         selected
             ? `${theme.misc.lineWidth}px solid ${theme.color.text}`
             : `${theme.misc.lineWidth}px solid ${theme.color.background}`};
-    border-left: 2px solid ${({ theme }) => theme.color.background};
+    border-left: ${({ theme }) => `${theme.misc.lineWidth}px solid ${theme.color.background}`};
+`;
+
+const StyledLink = styled(Link)`
+    padding: 30px 0;
+    width: inherit;
+    display: table;
+`;
+
+const StyledSpan = styled.span`
+    margin: 0 auto;
+    display: table-cell;
+    vertical-align: middle;
 `;
 
 export const Navigation = withRouter(({ items, location }) => (
@@ -31,9 +39,11 @@ export const Navigation = withRouter(({ items, location }) => (
             const isSelected = Route.matches(location, path);
 
             return (
-                <NavigationItem key={name}>
-                    <StyledLink to={Route.fullpath(path)} selected={isSelected}>
-                        <strong>{name}</strong>
+                <NavigationItem key={name} selected={isSelected}>
+                    <StyledLink to={Route.fullpath(path)}>
+                        <StyledSpan>
+                            <strong>{name}</strong>
+                        </StyledSpan>
                     </StyledLink>
                 </NavigationItem>
             );

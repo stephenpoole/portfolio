@@ -5,16 +5,15 @@ const LogoWrapper = styled.div`
     position: relative;
     width: inherit;
     writing-mode: vertical-rl;
-    display: table;
     transform: rotate(180deg);
     padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 const LogoInner = styled.div`
-    display: table-cell;
-    vertical-align: middle;
-
-    h3,
+    h1,
     p {
         white-space: nowrap;
         text-align: right;

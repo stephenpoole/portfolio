@@ -53,7 +53,8 @@ export const GlobalStyle = createGlobalStyle`
     menu, nav, output, ruby, section, summary,
     time, mark, audio, video {
         margin: 0;
-        padding: 0;
+        padding: 0;    
+        box-sizing: border-box;
     }
 
     h1,
