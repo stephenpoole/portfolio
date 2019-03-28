@@ -1,4 +1,5 @@
 import { Color } from '../util/index';
+import { RGB } from '../RGB';
 
 interface IColor {
     text: string;
@@ -28,10 +29,13 @@ export interface ITheme {
     misc: IMisc;
 }
 
+const textColor: RGB = Color.randomizeHue(new RGB('a53b3b'));
+const backgroundColor: RGB = Color.randomizeHue(new RGB('3a1212'), textColor);
+
 export const theme: ITheme = {
     color: {
-        text: Color.generate('#a53b3b'),
-        background: '#ffffff'
+        text: textColor.toString(),
+        background: backgroundColor.toString()
     },
     font: {
         size: 16,
