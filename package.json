@@ -81,6 +81,7 @@
         ],
         "reporter": [
             "text-summary",
+            "json",
             "html"
         ],
         "sourceMap": true,
