@@ -47,14 +47,6 @@ module.exports = function(env, argv) {
             extensions: ['.ts', '.tsx', '.js', '.json']
         },
         optimization: {
-            minimizer: [
-                new UglifyJsPlugin({
-                    uglifyOptions: {
-                        toplevel: false,
-                        mangle: true
-                    }
-                })
-            ],
             splitChunks: {
                 name: true,
                 cacheGroups: {
