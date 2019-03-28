@@ -9,7 +9,7 @@
         "noUnusedLocals": false,
         "module": "esnext",
         "moduleResolution": "node",
-        "lib": ["es5", "esnext", "dom"],
+        "lib": ["esnext", "dom"],
         "target": "es5",
         "allowJs": false,
         "experimentalDecorators": true,

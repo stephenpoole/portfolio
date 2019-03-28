@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
 import styled, { StyledComponent } from 'styled-components';
 import { Config, Route, IRouteItem } from '../util/index';
 
@@ -7,7 +8,11 @@ const NavigationWrapper = styled.ul`
     position: relative;
 `;
 
-const NavigationItem = styled.li`
+interface NavigationItemProps {
+    selected: boolean;
+}
+
+const NavigationItem = styled.li<NavigationItemProps>`
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     width: 100%;
@@ -18,7 +23,7 @@ const NavigationItem = styled.li`
         return selected
             ? `${theme.misc.lineWidth}px solid ${theme.color.text}`
             : `${theme.misc.lineWidth}px solid ${theme.color.background}`;
-    }}
+    }};
     border-left: ${({ theme }) => `${theme.misc.lineWidth}px solid ${theme.color.background}`};
 `;
 
@@ -34,12 +39,15 @@ const StyledSpan = styled.span`
     vertical-align: middle;
 `;
 
-interface Props {
-    items: IRouteItem[];
-    location: string;
+interface Params {
+    location?: string | undefined;
 }
 
-export const Navigation: React.FC<Props> = withRouter(({ items, location }) => (
+interface Props extends RouteComponentProps<Params> {
+    items: IRouteItem[];
+}
+
+export const Navigation = withRouter<Props>(({ items, location }) => (
     <NavigationWrapper>
         {Object.values(items).map(({ path, name }) => {
             const isSelected = Route.matches(location, path);

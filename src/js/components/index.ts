@@ -1,8 +1,10 @@
+import * as SvgClass from './Svg';
+
 export { Image } from './Image';
 export { A } from './A';
 
 export { Title, StyledTitle } from './Title';
-export { Github, LinkedIn, Mail, Twitter } from './Svg';
+export const Svg = SvgClass;
 export { Book } from './Book';
 export { Page } from './Page';
 export { Menu } from './Menu';

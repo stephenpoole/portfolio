@@ -4,7 +4,7 @@ import styled, { StyledComponent } from 'styled-components';
 const TitleText = styled.h1`
     font-family: ${({ theme }) => theme.font.sans};
     font-weight: bold;
-    font-size: 9em;
+    font-size: 10em;
     letter-spacing: -8px;
 `;
 
@@ -16,7 +16,11 @@ const TitleWrapper = styled.div`
     position: relative;
 `;
 
-const TitleTextWrapper = styled.div`
+interface TitleTextWrapperProps {
+    visible: number;
+}
+
+const TitleTextWrapper = styled.div<TitleTextWrapperProps>`
     position: absolute;
     bottom: 0;
     left: 0;
@@ -25,9 +29,9 @@ const TitleTextWrapper = styled.div`
 `;
 
 interface Props {
-    children?: JSX.Element | JSX.Element;
+    children?: JSX.Element[] | JSX.Element | string;
     visible?: number;
-    classNane?: string;
+    className?: string;
 }
 
 export const Title: React.FC<Props> = ({ children, visible = 100, className }) => (
@@ -41,6 +45,6 @@ export const Title: React.FC<Props> = ({ children, visible = 100, className }) =
 
 export const StyledTitle = styled(Title)`
     position: absolute;
-    top: -120px;
+    top: -135px;
     left: 20px;
 `;

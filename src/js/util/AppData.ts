@@ -12,14 +12,14 @@ export interface IInfo {
 
 export interface ISocialItem {
     name: string;
-    Component: new (props: any) => JSX.Element;
+    Component: React.FC<{}>;
     link: string;
 }
 
 export interface IRouteItem {
     path: string;
     name: string;
-    Component: new (props: any) => JSX.Element;
+    Component: React.FC<{}>;
 }
 
 export interface IWorkItem {

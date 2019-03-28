@@ -5,12 +5,13 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
-const config = require('./config.json');
+const Config = require('./config.json');
 
 const styledComponentsTransformer = createStyledComponentsTransformer();
 
 module.exports = function(env, argv) {
     const isDev = argv.mode === 'development';
+    const config = isDev ? Config.development : Config.production;
     const plugins = [
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',

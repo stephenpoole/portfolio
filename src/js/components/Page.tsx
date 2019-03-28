@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Page = styled.li`
     position: relative;
-    margin-top: 50px;
+    margin-top: 60px;
     margin-left: 50%;
     transform: translateX(-50%);
     border: solid ${props => props.theme.color.text};

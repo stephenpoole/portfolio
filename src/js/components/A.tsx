@@ -2,11 +2,12 @@ import React from 'react';
 
 interface Props {
     rel?: string;
-    children?: JSX.Element | JSX.Element;
+    href?: string;
+    children?: JSX.Element | JSX.Element | string;
 }
 
-export const A: React.FC<Props> = ({ rel = '', children, ...props }) => (
-    <a {...props} rel={`${rel} nofollow noreferer`}>
+export const A: React.FC<Props> = ({ rel = '', href = '', children }) => (
+    <a href={href} rel={`${rel} nofollow noreferer`}>
         {children}
     </a>
 );

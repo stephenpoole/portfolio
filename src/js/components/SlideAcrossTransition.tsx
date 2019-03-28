@@ -4,7 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import * as Util from '../util/index';
 
 interface Props {
-    children?: JSX.Element | JSX.Element;
+    children?: JSX.Element | JSX.Element | string;
     timeout?: number;
     easing?: string;
     in?: boolean;

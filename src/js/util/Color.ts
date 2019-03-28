@@ -8,8 +8,9 @@ interface IHsl {
 
 export class Color {
     public static generate(base = '#131313'): string {
-        const result: IHsl = color(base).hsl();
-        const [h, s, l] = result.color;
-        return color(`hsl(${Random.between(0, 360)}, ${s}%, ${l}%)`).hex();
+        const result: Color = color(base).hsl();
+        // const [h, s, l] = result.color;
+        // return color(`hsl(${Random.between(0, 360)}, ${s}%, ${l}%)`).hex();
+        return base;
     }
 }
