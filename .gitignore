@@ -153,3 +153,5 @@ App_Data/*.ldf
 *_references.js
 /Deploy
 .vs
+coverage
+.nyc_output

@@ -17,13 +17,6 @@
         "resolveJsonModule": true,
         "jsx": "react"
     },
-    "awesomeTypescriptLoaderOptions": {
-        "useBabel": true,
-        "useWebpackText": true,
-        "useCache": false,
-        "doTypeCheck": true,
-        "forkChecker": true
-    },
     "include": ["./src/**/*"],
     "exclude": ["node_modules"],
     "compileOnSave": true
