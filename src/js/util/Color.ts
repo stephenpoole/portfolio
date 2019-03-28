@@ -1,12 +1,12 @@
 import * as convert from 'color-convert';
-import { RGB } from '../RGB';
+import { Hex } from '../Hex';
 import { Random } from './index';
 
 export class Color {
-    public static randomizeHue(base: RGB, comparer?: RGB, retries: number = 1): RGB {
+    public static randomizeHue(base: Hex, comparer?: Hex, retries: number = 1): Hex {
         const [h, s, l] = convert.hex.hsl(base.get());
         const rand: number = Random.between(0, 360);
-        const generated = new RGB(convert.hsl.hex([rand, s, l]));
+        const generated = new Hex(convert.hsl.hex([rand, s, l]));
 
         if (typeof comparer !== 'undefined' && retries < 200) {
             if (!Color.isReadable(comparer, generated)) {
@@ -18,7 +18,7 @@ export class Color {
         return generated;
     }
 
-    public static isReadable(fg: RGB, bg: RGB): boolean {
+    public static isReadable(fg: Hex, bg: Hex): boolean {
         const fHex = convert.hex.rgb(fg.get());
         const fLuminance = Color.luminance(fHex[0], fHex[1], fHex[2]);
 
@@ -37,7 +37,7 @@ export class Color {
         }
 
         const contrast = Color.contrast(bright, dark);
-        return contrast < 4.5;
+        return contrast > 4.5; // 4.5:1 is the standard ratio for text according to WCAG AA
     }
 
     public static luminance(r: number, g: number, b: number): number {

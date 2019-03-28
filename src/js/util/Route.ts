@@ -5,7 +5,7 @@ interface Location {
 }
 
 export class Route {
-    public static matches(location: Location, path: string) {
+    public static matches(location: Location, path: string): boolean {
         return location.pathname === path || location.pathname === this.fullpath(path);
     }
 

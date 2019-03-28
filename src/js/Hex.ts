@@ -1,4 +1,4 @@
-export class RGB {
+export class Hex {
     private _hex: string = '';
 
     public constructor(hex: string) {
@@ -19,7 +19,7 @@ export class RGB {
 
     public set hex(value: string) {
         let lowercase = value.toLowerCase();
-        if (RGB.isHex(lowercase)) {
+        if (Hex.isHex(lowercase)) {
             if (lowercase.length === 3) {
                 lowercase = lowercase
                     .split('')
@@ -45,7 +45,7 @@ export class RGB {
         return `#${this.hex}`;
     }
 
-    public equals(color: RGB): boolean {
+    public equals(color: Hex): boolean {
         return this.hex === color.hex;
     }
 
