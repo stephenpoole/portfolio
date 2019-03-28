@@ -155,3 +155,4 @@ App_Data/*.ldf
 .vs
 coverage
 .nyc_output
+*.lcov

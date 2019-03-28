@@ -17,7 +17,7 @@ script:
     - npm test
     - npm start
 after_success:
-    - nyc report --reporter=json > coverage/coverage.json && codecov
+    - npm run coverage
 env:
     matrix:
         - secure: NJpyrdGtUIAf2N1Gl8yIMxlF62sUtsAywb2+fRfPnXmu8bJaPDfeEe5QTvSDqwJOQXPndSOhDQAG9Ws3dMpxyM/KRRgyLL2YhLeh04fx9j2O2Zqa7fDFt6rH7ivfDvn15Zs+J1UoRjy83MqzelH/8LrTsPFjxT0vtJaSpN2RUzvYJBXNiE/MkL1LZHNn8Rb2GetsR3PdSxUUbm4i2XVLbR8q1PImVA95gyFJaV+tSrsMsGvtxs5MtHNpq4NiYoEZnweTBf7GGb7uu1Crdyd6zayOAYDQGpYVjvvXCKqfFJypPoUp7IAzuPIN2mNP+a2J2sIVcnqrpMlbeA6bnG7q4PYxTKJiNSu0bJdhMbVWYDL1ZBKiu8ibwYWAoZtkaSKUtbpCfkOLSdJHUtcbDrI9fxsT/yBlSOIKUD+l0lUGuiAzfjQ0WpdJ5eVsYxmkMHE9n9jhDGnKX9a41BS93bjWa5Uhr1QN9B3NUlvqnes8l6F1gjzHdm1hgso10h8wxcm5S8Pu+SR5UzYHrzE7s+N/vOd+fMq98S+jNi4XvvnTkSsOxu3VFu47zw6rQc+2fq2RUTfV04m7lwU55P27CaGCbsDHmhAO636ne36tfEja6hTKk708sg1ckthO5I11ExaK/1ycKNuaV82K8cfkhcN4UbQGoeYoxzPB93fYpr7Shtk=
