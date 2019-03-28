@@ -7,10 +7,10 @@ interface Props {
 }
 
 export const ContentWrapper = styled.div`
-    float: left;
     height: 100%;
     position: relative;
     width: calc(100% - 100px);
+    margin-left: 100px;
 `;
 
 export const Content: React.FC<Props> = ({ children, className }) => (

@@ -1,4 +1,13 @@
-export { AppData, IAppData, IInfo, IRouteItem, ISocialItem, IWorkItem } from './AppData';
+export {
+    AppData,
+    IAppData,
+    IInfo,
+    IRouteItem,
+    IRouteItemData,
+    ISocialItem,
+    IWorkItem,
+    IPageProps
+} from './AppData';
 export { Env, Environments } from './Env';
 export { Config } from './Config';
 export { Platform, Platforms } from './Platform';

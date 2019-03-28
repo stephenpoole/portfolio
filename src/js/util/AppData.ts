@@ -1,8 +1,6 @@
 import React from 'react';
 import * as Svg from '../components/Svg';
-import { WorkContainer } from '../components/WorkContainer';
-import { ContactContainer } from '../components/ContactContainer';
-import { AboutContainer } from '../components/AboutContainer';
+import { About, Work, Contact } from '../components/index';
 
 export interface IInfo {
     name: string;
@@ -16,10 +14,18 @@ export interface ISocialItem {
     link: string;
 }
 
+export interface IPageProps {
+    route: IRouteItem;
+    key: string;
+}
+
 export interface IRouteItem {
     path: string;
     name: string;
-    Component: React.FC<{}>;
+}
+
+export interface IRouteItemData extends IRouteItem {
+    Component: React.FC<IPageProps>;
 }
 
 export interface IWorkItem {
@@ -36,7 +42,7 @@ export interface IWorkItem {
 export interface IAppData {
     info: IInfo;
     social: ISocialItem[];
-    routes: IRouteItem[];
+    routes: IRouteItemData[];
     skills: string[];
     work: IWorkItem[];
 }
@@ -73,17 +79,17 @@ const data: IAppData = {
         {
             path: '/about',
             name: 'About',
-            Component: AboutContainer
+            Component: About
         },
         {
             path: '/work',
             name: 'Work',
-            Component: WorkContainer
+            Component: Work
         },
         {
             path: '/contact',
             name: 'Contact',
-            Component: ContactContainer
+            Component: Contact
         }
     ],
     skills: [
@@ -114,7 +120,7 @@ const data: IAppData = {
 export class AppDataClass implements IAppData {
     public info: IInfo;
     public social: ISocialItem[];
-    public routes: IRouteItem[];
+    public routes: IRouteItemData[];
     public skills: string[];
     public work: IWorkItem[];
 

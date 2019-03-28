@@ -30,11 +30,11 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         color: ${theme.color.text};
+        background: ${theme.color.background};
         margin: 0;
         padding: 0;
         font-family: ${theme.font.sans};
         font-size: 12pt;
-        overflow: hidden;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }

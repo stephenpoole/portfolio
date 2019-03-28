@@ -1,8 +1,9 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 import { RouteComponentProps } from 'react-router';
-import styled, { StyledComponent } from 'styled-components';
-import { Config, Route, IRouteItem } from '../util/index';
+import styled from 'styled-components';
+import { Route, IRouteItem } from '../util/index';
 
 const NavigationWrapper = styled.ul`
     position: relative;
@@ -54,7 +55,12 @@ export const Navigation = withRouter<Props>(({ items, location }) => (
 
             return (
                 <NavigationItem key={name} selected={isSelected}>
-                    <StyledLink to={Route.fullpath(path)}>
+                    <StyledLink
+                        scroll={element =>
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                        }
+                        to={`/#${name}`}
+                    >
                         <StyledSpan>
                             <strong>{name}</strong>
                         </StyledSpan>

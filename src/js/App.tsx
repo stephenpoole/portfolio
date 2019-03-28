@@ -1,20 +1,11 @@
-import React, { createElement } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import styled, { ThemeProvider, StyledComponent } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { Normalize } from 'styled-normalize';
 import * as Util from './util/index';
 import { theme, GlobalStyle } from './styles/index';
 import { Routes } from './Constants';
-import {
-    ContactContainer,
-    WorkContainer,
-    AboutContainer,
-    SidebarContainer,
-    ContentContainer,
-    Menu,
-    Book,
-    SlideAcrossTransition
-} from './components/index';
+import { SidebarContainer, ContentContainer, Menu, Book } from './components/index';
 
 const AppWrapper = styled.div`
     width: 100%;
@@ -38,18 +29,11 @@ export const App: React.FC<{}> = () => (
                     </SidebarContainer>
                     <ContentContainer>
                         <Book>
-                            {Util.AppData.routes.map(({ path, Component }) => {
-                                const fullpath = Util.Route.fullpath(path);
-                                return (
-                                    <Route key={fullpath} exact path={fullpath}>
-                                        {({ match }) => (
-                                            <SlideAcrossTransition in={match !== null}>
-                                                <Component />
-                                            </SlideAcrossTransition>
-                                        )}
-                                    </Route>
-                                );
-                            })}
+                            {Util.AppData.routes.map(
+                                ({ name, path, Component }: Util.IRouteItemData) => {
+                                    return <Component key={path} route={{ name, path }} />;
+                                }
+                            )}
                             <Switch>
                                 <Route path={Routes.Work} />
                                 <Route path={Routes.Contact} />
