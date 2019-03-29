@@ -18,6 +18,11 @@ script:
     - npm start
 after_success:
     - npm run coverage
+    - chmod +x ./.travis/deploy.sh
+    - ./.travis/deploy.sh
 env:
     matrix:
         - secure: NJpyrdGtUIAf2N1Gl8yIMxlF62sUtsAywb2+fRfPnXmu8bJaPDfeEe5QTvSDqwJOQXPndSOhDQAG9Ws3dMpxyM/KRRgyLL2YhLeh04fx9j2O2Zqa7fDFt6rH7ivfDvn15Zs+J1UoRjy83MqzelH/8LrTsPFjxT0vtJaSpN2RUzvYJBXNiE/MkL1LZHNn8Rb2GetsR3PdSxUUbm4i2XVLbR8q1PImVA95gyFJaV+tSrsMsGvtxs5MtHNpq4NiYoEZnweTBf7GGb7uu1Crdyd6zayOAYDQGpYVjvvXCKqfFJypPoUp7IAzuPIN2mNP+a2J2sIVcnqrpMlbeA6bnG7q4PYxTKJiNSu0bJdhMbVWYDL1ZBKiu8ibwYWAoZtkaSKUtbpCfkOLSdJHUtcbDrI9fxsT/yBlSOIKUD+l0lUGuiAzfjQ0WpdJ5eVsYxmkMHE9n9jhDGnKX9a41BS93bjWa5Uhr1QN9B3NUlvqnes8l6F1gjzHdm1hgso10h8wxcm5S8Pu+SR5UzYHrzE7s+N/vOd+fMq98S+jNi4XvvnTkSsOxu3VFu47zw6rQc+2fq2RUTfV04m7lwU55P27CaGCbsDHmhAO636ne36tfEja6hTKk708sg1ckthO5I11ExaK/1ycKNuaV82K8cfkhcN4UbQGoeYoxzPB93fYpr7Shtk=
+        - secure: trhFQ7wNX17Qr2uEhlp4Y0osrZe4eaaKn9wR2tuh7iRfeqyQt6mNTyT57lMlYIVGNrjPCHNUMXxBzE0vJx+qtFTOfrpFU+dns+dlrW1jTc1Jrc+Eibmt4zlGBLi4Jmi64HhYWoCl9EBnKd1nQAWyNQw1NiHETfeYvsDkSWJdA8rfcWleNQPFGZ3BiIUdAStZgkOZPX6UW/80PbRZ2M1frYkJC5SYOsmnCe1xEnHjWb4fNb9Xeb+ecmn23AhKRJrfY8vz0lL1gn/HX1dznY3MkbFDKZcdFf8NthjgPqHIUVVSt9xIQiDS9+CDVxcn5Smv4PWbKkn2BDXwJ+dPzqgGxkEeD8j6t3zpitqshWKACbOiotq5mnn9/5bJA4q+3CahAZi9LZ8jvFJkYGLj2mDnjMlyXFyIeXLSpPGoVhgg9NYL5lMJn9xHfW7g1RkMRsYAzVSJGjhIOwNUH5tbPX+8o9SPjnDlOP3APcDj7GtbpQTInVaCVf38hPd7SoNDjnddzS4Uf7IIlmopqsly2f3JvdbsHSBywC6Ti3FUecdWTN1hsAplyfyEervLSXdxnwN3RFLD3TRaErp0RIpnyv0Wv3sYRwl/FrhJc9CP42PVXEY38w2GkiiIYtPQrR8IiBS0/gSxY99qB5eWtHVQEu14m8I2/S1e0VErZO1N0JEV+Zo=
+before_install:
+    - openssl aes-256-cbc -K $encrypted_e45bdf762717_key -iv $encrypted_e45bdf762717_iv -in ./.travis/id_rsa.ppk.enc -out ./.travis/id_rsa.ppk -d
