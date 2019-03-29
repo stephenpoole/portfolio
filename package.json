@@ -7,8 +7,7 @@
         "test": "cross-env NODE_ENV=\"production\" TS_NODE_COMPILER_OPTIONS=\"{\\\"module\\\": \\\"commonjs\\\"}\" nyc mocha test/**/*.spec.ts",
         "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
         "start": "webpack --mode=production",
-        "dev": "webpack -w --mode=development",
-        "deploy": "git push production master"
+        "dev": "webpack -w --mode=development"
     },
     "keywords": [],
     "author": "Stephen Poole",
