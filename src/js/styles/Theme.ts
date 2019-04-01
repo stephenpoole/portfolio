@@ -1,4 +1,4 @@
-import { Color } from '../util/index';
+import { Color } from '../util/Color';
 import { Hex } from '../Hex';
 
 interface IColor {
@@ -20,6 +20,7 @@ interface IMedia {
 
 interface IMisc {
     lineWidth: number;
+    inputPadding: number;
 }
 
 export interface ITheme {
@@ -48,6 +49,7 @@ export const theme: ITheme = {
         desktop: '(max-width: 1400px)'
     },
     misc: {
-        lineWidth: 6
+        lineWidth: 6,
+        inputPadding: 10
     }
 };

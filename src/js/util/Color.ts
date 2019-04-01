@@ -1,6 +1,6 @@
 import * as convert from 'color-convert';
 import { Hex } from '../Hex';
-import { Random } from './index';
+import { Random } from './Random';
 
 export class Color {
     public static randomizeHue(base: Hex, comparer?: Hex, retries: number = 1): Hex {

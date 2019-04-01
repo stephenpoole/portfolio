@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const ContentSection = styled.div`
+interface IProps {
+    underlined?: boolean;
+}
+
+export const ContentSection = styled.div<IProps>`
     font-size: 14pt;
     margin: 100px 0;
     line-height: 34px;
@@ -15,7 +19,7 @@ export const ContentSection = styled.div`
         margin-bottom: 10px;
     }
     h3 {
-        border-bottom: 3px solid ${({ theme }) => theme.color.text};
+        border-bottom: ${({ theme, underlined = true }) => (underlined ? `3px solid ${theme.color.text};` : 'none;')}
     }
     ul {
         display: inline-block;
