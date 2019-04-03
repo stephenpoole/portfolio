@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { HashLink as Link } from 'react-router-hash-link';
 import { A, StyledTitle, Page, ContentSection, Spacer } from './index';
 import { AppData, IPageProps } from '../util/index';
 
@@ -32,7 +33,14 @@ export const About: React.FC<IPageProps> = ({ route }) => (
                 <p>New opportunities are always welcome.</p>
                 <p>
                     <strong>
-                        <A href={`mailto:${AppData.info.email}`}>{AppData.info.email}</A>
+                        <Link
+                            scroll={element =>
+                                element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                            }
+                            to={'/#Contact'}
+                        >
+                            {AppData.info.email}
+                        </Link>
                     </strong>
                 </p>
             </ContentSection>

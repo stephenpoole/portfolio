@@ -4,6 +4,7 @@ import { Hex } from '../Hex';
 interface IColor {
     text: string;
     background: string;
+    pairs: Hex[][];
 }
 
 interface IFont {
@@ -30,13 +31,15 @@ export interface ITheme {
     misc: IMisc;
 }
 
-const textColor: Hex = Color.randomizeHue(new Hex('a53b3b'));
-const backgroundColor: Hex = Color.randomizeHue(new Hex('3a1212'), textColor);
+const pairs: Hex[][] = [0, 0, 0].map(() =>
+    Color.generatePair(new Hex('a53b3b'), new Hex('3a1212'))
+);
 
 export const theme: ITheme = {
     color: {
-        text: textColor.toString(),
-        background: backgroundColor.toString()
+        text: pairs[0][0].toString(),
+        background: pairs[0][1].toString(),
+        pairs
     },
     font: {
         size: 16,

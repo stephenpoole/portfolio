@@ -29,8 +29,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        color: ${theme.color.text};
-        background: ${theme.color.background};
         margin: 0;
         padding: 0;
         font-family: ${theme.font.sans};

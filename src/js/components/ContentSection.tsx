@@ -7,7 +7,7 @@ interface IProps {
 
 export const ContentSection = styled.div<IProps>`
     font-size: 14pt;
-    margin: 100px 0;
+    margin: 80px 0;
     line-height: 34px;
 
     h1,
@@ -19,7 +19,7 @@ export const ContentSection = styled.div<IProps>`
         margin-bottom: 10px;
     }
     h3 {
-        border-bottom: ${({ theme, underlined = true }) => (underlined ? `3px solid ${theme.color.text};` : 'none;')}
+        border-bottom: ${({ theme, underlined = true }) => (underlined ? `3px solid ${theme.color.text};` : 'none;')};
     }
     ul {
         display: inline-block;

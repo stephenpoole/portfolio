@@ -30,7 +30,7 @@ const Anchor = styled.div<AnchorProps>`
     position: absolute;
     height: 1px;
     width: 100%;
-    top: -150px;
+    top: -110px;
     left: 0;
 `;
 

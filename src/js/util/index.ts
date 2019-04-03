@@ -17,3 +17,4 @@ export { Route } from './Route';
 export { StringClass as String } from './String';
 export { Random } from './Random';
 export { Validate } from './Validate';
+export { Scroll } from './Scroll';

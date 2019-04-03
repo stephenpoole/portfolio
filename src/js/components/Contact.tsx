@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext, useReducer, Dispatch, useEffect } from 'react';
+import React, { useRef, useState, useReducer, Dispatch } from 'react';
 import styled from 'styled-components';
 import { StyledTitle, Page, Spacer, Svg } from './index';
 import { IPageProps } from '../util';
@@ -14,6 +14,10 @@ interface IProps {
     dispatch?: Dispatch<FormAction>;
     valid?: boolean;
     fetching?: boolean;
+    enabled?: boolean;
+    dirty?: boolean;
+    show?: boolean;
+    style?: any;
 }
 
 enum FormSubmissionResult {
@@ -24,11 +28,28 @@ enum FormSubmissionResult {
 
 const StatusIcon = styled.div<IProps>`
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
+    right: 15px;
+    top: 15px;
     z-index: 2;
+    transition: opacity 0.1s;
+    opacity: ${({ show = true }) => (show ? 1 : 0)};
+
+    > span {
+        display: block;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+        position: relative;
+    }
 `;
-const StatusIconWrapper: React.FC<IProps> = ({ className, valid = false, fetching = false }) => {
+const StatusIconWrapper: React.FC<IProps> = ({
+    className,
+    valid = false,
+    fetching = false,
+    show = true
+}) => {
     let Element = () => <Cross />;
     if (fetching) {
         Element = () => <Dots />;
@@ -36,22 +57,37 @@ const StatusIconWrapper: React.FC<IProps> = ({ className, valid = false, fetchin
         Element = () => <Check />;
     }
     return (
-        <StatusIcon className={className}>
+        <StatusIcon className={className} show={show}>
             <Element />
         </StatusIcon>
     );
 };
 
-const Input = styled.input`
+const Input = styled.input<IProps>`
     border: ${({ theme }) => `${theme.misc.lineWidth}px solid ${theme.color.text}`};
     background: ${({ theme }) => `${theme.color.background}`};
     color: ${({ theme }) => `${theme.color.text}`};
     font-family: ${({ theme }) => `${theme.font.sans}`};
     padding: ${({ theme }) => `${theme.misc.inputPadding}`};
+    cursor: ${({ enabled = true, fetching = false }) =>
+        `${enabled && !fetching ? 'initial' : 'default'}`};
     width: 100%;
     margin-bottom: 20px;
 `;
-const InputWrapper: React.FC<IProps> = ({ className, text = '', valid = false, dispatch }) => {
+const InputInner = styled.div<IProps>`
+    position: relative;
+    transition: 0.3s opacity;
+    opacity: ${({ enabled = true, fetching = false }) => `${enabled && !fetching ? 1 : 0.3}`};
+`;
+const InputWrapper: React.FC<IProps> = ({
+    className,
+    text = '',
+    valid = false,
+    enabled = true,
+    fetching = false,
+    dirty = false,
+    dispatch
+}) => {
     const onChange = (event: React.FormEvent<HTMLInputElement>) => {
         let { value } = event.currentTarget;
         if (value.length > Config.emailLimit) {
@@ -61,26 +97,49 @@ const InputWrapper: React.FC<IProps> = ({ className, text = '', valid = false, d
     };
 
     return (
-        <div>
-            <Input className={className} onChange={onChange} value={text} />
-            <StatusIconWrapper valid={valid} />
-        </div>
+        <InputInner enabled={enabled} fetching={fetching}>
+            <h3>Email</h3>
+            <div style={{ position: 'relative' }}>
+                <Input
+                    className={className}
+                    onChange={onChange}
+                    value={text}
+                    enabled={enabled}
+                    disabled={!enabled}
+                    fetching={fetching}
+                />
+                <StatusIconWrapper valid={valid} show={dirty} />
+            </div>
+        </InputInner>
     );
 };
 
-const TextArea = styled.textarea`
+const TextArea = styled.textarea<IProps>`
     border: ${({ theme }) => `${theme.misc.lineWidth}px solid ${theme.color.text}`};
     background: ${({ theme }) => `${theme.color.background}`};
     color: ${({ theme }) => `${theme.color.text}`};
     font-family: ${({ theme }) => `${theme.font.sans}`};
     padding: ${({ theme }) => `${theme.misc.inputPadding}`};
+    cursor: ${({ enabled = true, fetching = false }) =>
+        `${enabled && !fetching ? 'initial' : 'default'}`};
     width: 100%;
     resize: none;
     overflow: hidden;
     height: 40vh;
     margin-bottom: 20px;
 `;
-const TextAreaWrapper: React.FC<IProps> = ({ className, text = '', valid = false, dispatch }) => {
+const TextAreaInner = styled.div<IProps>`
+    position: relative;
+    transition: 0.3s opacity;
+    opacity: ${({ enabled = true, fetching = false }) => `${enabled && !fetching ? 1 : 0.3}`};
+`;
+const TextAreaWrapper: React.FC<IProps> = ({
+    className,
+    text = '',
+    fetching = false,
+    enabled = true,
+    dispatch
+}) => {
     const textAreaRef = useRef() as React.MutableRefObject<HTMLTextAreaElement>;
     const [init, setInit] = useState(false);
     const [minHeight, setMinHeight] = useState(0);
@@ -104,16 +163,19 @@ const TextAreaWrapper: React.FC<IProps> = ({ className, text = '', valid = false
     };
 
     return (
-        <div>
+        <TextAreaInner enabled={enabled} fetching={fetching}>
+            <h3>Message</h3>
             <TextArea
                 className={className}
                 onKeyDown={resize}
                 onChange={onChange}
                 ref={textAreaRef}
                 value={text}
+                enabled={enabled}
+                fetching={fetching}
+                disabled={!enabled}
             />
-            <StatusIconWrapper valid={valid} />
-        </div>
+        </TextAreaInner>
     );
 };
 
@@ -122,6 +184,7 @@ interface ISubmitButtonProps extends IProps {
     body?: string;
     email?: string;
     valid?: boolean;
+    enabled?: boolean;
 }
 const SubmitButton = styled.button<ISubmitButtonProps>`
     border: ${({ theme }) => `${theme.misc.lineWidth}px solid ${theme.color.text}`};
@@ -130,19 +193,23 @@ const SubmitButton = styled.button<ISubmitButtonProps>`
     font-family: ${({ theme }) => `${theme.font.sans}`};
     padding: ${({ theme }) => `${theme.misc.inputPadding}`};
     transition: 0.3s opacity;
-    opacity: ${({ valid }) => `${valid ? 1 : 0.3}`};
+    opacity: ${({ valid, enabled = true, fetching = false }) =>
+        `${valid && enabled && !fetching ? 1 : 0.3}`};
+    cursor: ${({ valid, enabled = true, fetching = false }) =>
+        `${valid && enabled && !fetching ? 'pointer' : 'initial'}`};
     font-weight: bold;
-    cursor: ${({ valid }) => `${valid ? 'pointer' : 'initial'}`};
 `;
 const SubmitButtonWrapper: React.FC<ISubmitButtonProps> = ({
     className,
-    valid,
     body,
     email,
+    valid = false,
+    fetching = false,
+    enabled = true,
     dispatch
 }) => {
     const submit = async () => {
-        if (!valid) {
+        if (!valid || !enabled) {
             return;
         }
 
@@ -155,7 +222,13 @@ const SubmitButtonWrapper: React.FC<ISubmitButtonProps> = ({
         }
     };
     return (
-        <SubmitButton className={className} onClick={submit} valid={valid}>
+        <SubmitButton
+            className={className}
+            onClick={submit}
+            valid={valid}
+            enabled={enabled}
+            fetching={fetching}
+        >
             Submit
         </SubmitButton>
     );
@@ -163,12 +236,14 @@ const SubmitButtonWrapper: React.FC<ISubmitButtonProps> = ({
 
 interface FormState {
     email: string;
+    emailIsDirty: boolean;
     emailIsValid: boolean;
     body: string;
     bodyIsValid: boolean;
     isValid: boolean;
     fetching: boolean;
     result: FormSubmissionResult;
+    enabled: boolean;
 }
 type FormActionTypes = 'setEmail' | 'setBody' | 'fetching' | 'gotResult';
 interface FormAction {
@@ -187,6 +262,7 @@ const FormReducer = (state: FormState, action: FormAction) => {
                 ...state,
                 email: action.text,
                 emailIsValid: valid,
+                emailIsDirty: true,
                 isValid: valid && state.bodyIsValid
             };
         case 'setBody':
@@ -206,7 +282,8 @@ const FormReducer = (state: FormState, action: FormAction) => {
             return {
                 ...state,
                 fetching: false,
-                result: action.result
+                result: action.result,
+                enabled: action.result === FormSubmissionResult.Success ? false : state.enabled
             };
         default:
             return state;
@@ -215,25 +292,45 @@ const FormReducer = (state: FormState, action: FormAction) => {
 const Form: React.FC<IProps> = ({ className }) => {
     const [state, dispatch] = useReducer(FormReducer, {
         email: '',
+        emailIsDirty: false,
         emailIsValid: false,
         body: '',
         bodyIsValid: false,
         isValid: false,
         fetching: false,
-        result: FormSubmissionResult.None
+        result: FormSubmissionResult.None,
+        enabled: true
     });
 
     return (
         <div className={className}>
-            <h3>Email</h3>
-            <InputWrapper dispatch={dispatch} text={state.email} valid={state.emailIsValid} />
-            <h3>Message</h3>
-            <TextAreaWrapper dispatch={dispatch} text={state.body} valid={state.bodyIsValid} />
+            <InputWrapper
+                dispatch={dispatch}
+                text={state.email}
+                valid={state.emailIsValid}
+                enabled={state.enabled}
+                fetching={state.fetching}
+                dirty={state.emailIsDirty}
+            />
+            <TextAreaWrapper
+                dispatch={dispatch}
+                text={state.body}
+                valid={state.bodyIsValid}
+                fetching={state.fetching}
+                enabled={state.enabled}
+            />
             <SubmitButtonWrapper
                 dispatch={dispatch}
                 valid={state.isValid}
                 email={state.email}
+                fetching={state.fetching}
                 body={state.body}
+                enabled={state.enabled}
+            />
+            <StatusIconWrapper
+                valid={state.result === FormSubmissionResult.Success}
+                fetching={state.fetching}
+                show={state.fetching || state.result !== FormSubmissionResult.None}
             />
         </div>
     );

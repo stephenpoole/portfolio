@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface Props {
     rel?: string;
     href?: string;
-    children?: JSX.Element | JSX.Element | string;
+    children?: JSX.Element | JSX.Element | string | ReactNode | ReactNode[];
 }
 
 export const A: React.FC<Props> = ({ rel = '', href = '', children }) => (

@@ -15,6 +15,7 @@ export { Social } from './Social';
 export { Content } from './Content';
 export { ContentSection } from './ContentSection';
 export { ScrollTracker } from './ScrollTracker';
+export { TweenColorsViaScroll } from './TweenColorsViaScroll';
 
 export { About } from './About';
 export { Work } from './Work';

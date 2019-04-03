@@ -92,17 +92,7 @@ const data: IAppData = {
             Component: Contact
         }
     ],
-    skills: [
-        'React',
-        'Webpack',
-        'C#',
-        'Typescript',
-        'SASS',
-        'MobX',
-        'ES6',
-        'Greensock',
-        'Banner Ads'
-    ],
+    skills: ['React', 'Redux', 'Typescript', 'ES6', 'Sass', 'Webpack', 'Mocha', 'C#', 'Node'],
     work: [
         {
             name: '',
