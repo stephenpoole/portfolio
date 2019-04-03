@@ -4,6 +4,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 import { RouteComponentProps } from 'react-router';
 import styled from 'styled-components';
 import { Route, IRouteItem } from '../util/index';
+import { ScrollTracker } from './index';
 
 const NavigationWrapper = styled.ul`
     position: relative;
@@ -20,12 +21,6 @@ const NavigationItem = styled.li<NavigationItemProps>`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-right: ${({ theme, selected }) => {
-        return selected
-            ? `${theme.misc.lineWidth}px solid ${theme.color.text}`
-            : `${theme.misc.lineWidth}px solid ${theme.color.background}`;
-    }};
-    border-left: ${({ theme }) => `${theme.misc.lineWidth}px solid ${theme.color.background}`};
 `;
 
 const StyledLink = styled(Link)`
@@ -38,6 +33,12 @@ const StyledSpan = styled.span`
     margin: 0 auto;
     display: table-cell;
     vertical-align: middle;
+    min-height: 64px;
+
+    strong {
+        display: block;
+        text-align: center;
+    }
 `;
 
 interface Params {
@@ -48,25 +49,30 @@ interface Props extends RouteComponentProps<Params> {
     items: IRouteItem[];
 }
 
-export const Navigation = withRouter<Props>(({ items, location }) => (
-    <NavigationWrapper>
-        {Object.values(items).map(({ path, name }) => {
-            const isSelected = Route.matches(location, path);
+export const Navigation = withRouter<Props>(({ items, location }) => {
+    const itemArray = Object.values(items);
 
-            return (
-                <NavigationItem key={name} selected={isSelected}>
-                    <StyledLink
-                        scroll={element =>
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                        }
-                        to={`/#${name}`}
-                    >
-                        <StyledSpan>
-                            <strong>{name}</strong>
-                        </StyledSpan>
-                    </StyledLink>
-                </NavigationItem>
-            );
-        })}
-    </NavigationWrapper>
-));
+    return (
+        <NavigationWrapper>
+            {itemArray.map(({ path, name }) => {
+                const isSelected = Route.matches(location, path);
+
+                return (
+                    <NavigationItem key={name} selected={isSelected}>
+                        <StyledLink
+                            scroll={element =>
+                                element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                            }
+                            to={`/#${name}`}
+                        >
+                            <StyledSpan>
+                                <strong>{name}</strong>
+                            </StyledSpan>
+                        </StyledLink>
+                    </NavigationItem>
+                );
+            })}
+            <ScrollTracker count={itemArray.length} />
+        </NavigationWrapper>
+    );
+});

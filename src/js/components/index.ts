@@ -14,6 +14,7 @@ export { Navigation } from './Navigation';
 export { Social } from './Social';
 export { Content } from './Content';
 export { ContentSection } from './ContentSection';
+export { ScrollTracker } from './ScrollTracker';
 
 export { About } from './About';
 export { Work } from './Work';

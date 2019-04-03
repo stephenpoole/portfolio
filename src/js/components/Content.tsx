@@ -7,7 +7,6 @@ interface Props {
 }
 
 export const ContentWrapper = styled.div`
-    height: 100%;
     position: relative;
     width: calc(100% - 100px);
     margin-left: 100px;

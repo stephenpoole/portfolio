@@ -1,57 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 export interface IScrollItem {
-    height: number;
+    height?: number;
     top: number;
 }
 
 interface IProps {
-    className: string;
-    scrollItems: IScrollItem[];
-    navItems: IScrollItem[];
-    navHeight: number;
+    className?: string;
+    count: number;
 }
 
 interface IStyleProps {
     className: string;
     progress: number;
-    itemCount: number;
+    count: number;
 }
 
-const ScrollTrackerWrapper = styled.div<IStyleProps>`
+const ScrollTrackerWrapper = styled.div.attrs(({ progress }: IStyleProps) => ({
+    style: {
+        top: `${progress * 100}%`
+    }
+}))<IStyleProps>`
     position: absolute;
-    height: ${({ itemCount }) => `${100 / itemCount}%`};
-    top: ${({ progress }) => `${progress * 100}%`};
+    height: ${({ count }) => `${100 / count}%`};
     width: ${({ theme }) => `${theme.misc.lineWidth}px`};
-    right: 0;
+    left: 0;
+    background: ${({ theme }) => `${theme.color.text}`};
+    transition: 0.1s transform;
 `;
 
 const bodyRef = document.getElementsByTagName('body')[0];
 
-export const ScrollTracker: React.FC<IProps> = ({
-    className,
-    scrollItems = [],
-    navItems = [],
-    navHeight = 0
-}) => {
+export const ScrollTracker: React.FC<IProps> = ({ className, count }) => {
     const getProgress = () => {
         const scrollTop: number = window.pageYOffset;
         const bodyHeight: number = bodyRef.offsetHeight;
         const windowHeight: number = window.innerHeight;
-        return scrollTop / (bodyHeight - windowHeight);
+        const offset: number = bodyHeight - windowHeight;
+        return scrollTop / (offset || 1);
     };
     const [progress, setProgress] = useState(getProgress());
 
-    window.addEventListener('scroll', () => {
-        setProgress(getProgress());
-    });
+    window.addEventListener('scroll', () => setProgress(getProgress()));
 
-    return (
-        <ScrollTrackerWrapper
-            className={className}
-            progress={progress}
-            itemCount={scrollItems.length}
-        />
-    );
+    return <ScrollTrackerWrapper className={className!} progress={progress} count={count} />;
 };
