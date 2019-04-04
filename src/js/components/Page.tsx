@@ -14,6 +14,10 @@ export const StyledPage = styled.li`
     border: ${({ theme }) => `${theme.misc.lineWidth}px solid ${theme.color.text}`};
     width: calc(100% - 100px);
 
+    ${({ theme }) => theme.media.desktop} {
+        width: calc(100% - 20px);
+    }
+
     &:last-child {
         border-bottom: none;
     }

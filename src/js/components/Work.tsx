@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import { StyledTitle, Page, ContentSection, Spacer, A, Image } from './index';
 import { AppData, IPageProps } from '../util';
 import { Arrow } from './Svg';
-
-const Wrapper = styled.div`
-    padding: 140px 150px;
-`;
+import { PageInner } from './PageInner';
 
 const ItemWrapper = styled.div`
     position: relative;
@@ -45,7 +42,7 @@ const DistinctItemWrapper = styled(ItemWrapper)`
 export const Work: React.FC<IPageProps> = ({ route }) => (
     <Page id={route}>
         <StyledTitle visible={76}>Work</StyledTitle>
-        <Wrapper>
+        <PageInner>
             {AppData.work.map(({ name, client, image, logo, year, agency, link, tech }) => (
                 <StyledContentSection underlined={false} key={name}>
                     <A href={link}>
@@ -76,6 +73,6 @@ export const Work: React.FC<IPageProps> = ({ route }) => (
                 </StyledContentSection>
             ))}
             <Spacer height={1000} count={20} />
-        </Wrapper>
+        </PageInner>
     </Page>
 );

@@ -7,6 +7,7 @@ import { theme } from '../styles/index';
 import { Config, Validate } from '../util/index';
 import { Api } from '../services';
 import { Check, Dots, Cross } from './Svg';
+import { PageInner } from './PageInner';
 
 interface IProps {
     className?: string;
@@ -336,18 +337,14 @@ const Form: React.FC<IProps> = ({ className }) => {
     );
 };
 
-const Wrapper = styled.div`
-    padding: 140px 150px;
-`;
-
 export const Contact: React.FC<IPageProps> = ({ route }) => (
     <Page id={route}>
         <StyledTitle visible={76}>Contact</StyledTitle>
-        <Wrapper>
+        <PageInner>
             <ContentSection underlined={false}>
                 <Form />
             </ContentSection>
             <Spacer height={1000} count={20} />
-        </Wrapper>
+        </PageInner>
     </Page>
 );
