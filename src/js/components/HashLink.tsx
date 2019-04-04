@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 interface IProps {
     to: string;
@@ -10,10 +9,11 @@ interface IProps {
 export class HashLink extends React.Component<IProps> {
     public target: HTMLDivElement | null = null;
 
-    public onClick() {
+    public onClick(e: MouseEvent) {
+        e.preventDefault();
         const { target } = this;
         if (target !== null) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     }
 

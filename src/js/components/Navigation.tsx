@@ -25,6 +25,7 @@ const StyledLink = styled(HashLink)`
     padding: 30px 0;
     width: inherit;
     display: table;
+    text-transform: capitalize;
 `;
 
 const StyledSpan = styled.span`
@@ -53,11 +54,11 @@ export const Navigation: React.FC<Props> = ({ items }) => {
 
                 return (
                     <NavigationItem key={name} selected={isSelected}>
-                        <HashLink to={name}>
+                        <StyledLink to={name}>
                             <StyledSpan>
                                 <strong>{name}</strong>
                             </StyledSpan>
-                        </HashLink>
+                        </StyledLink>
                     </NavigationItem>
                 );
             })}
