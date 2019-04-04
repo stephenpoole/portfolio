@@ -9,6 +9,7 @@ export const ContentSection = styled.div<IProps>`
     font-size: 14pt;
     margin: 80px 0;
     line-height: 34px;
+    position: relative;
 
     h1,
     h2,

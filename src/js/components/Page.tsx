@@ -17,9 +17,6 @@ export const StyledPage = styled.li`
     &:last-child {
         border-bottom: none;
     }
-    &:first-child {
-        margin-top: 60px;
-    }
 `;
 
 interface AnchorProps {

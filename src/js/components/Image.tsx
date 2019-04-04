@@ -11,5 +11,5 @@ const StyledImg = styled.img`
 `;
 
 export const Image: React.FC<Props> = ({ src, ...props }) => (
-    <StyledImg {...props} src={`${Config.imagePrefix}${src}`} />
+    <StyledImg {...props} src={`${Config.imagePrefix}/${src}`} />
 );

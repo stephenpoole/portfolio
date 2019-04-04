@@ -1,6 +1,5 @@
 import React from 'react';
 import * as Svg from '../components/Svg';
-import { About, Work, Contact } from '../components/index';
 
 export interface IInfo {
     name: string;
@@ -15,34 +14,28 @@ export interface ISocialItem {
 }
 
 export interface IPageProps {
-    route: IRouteItem;
-    key: string;
+    route: string;
 }
 
 export interface IRouteItem {
-    path: string;
-    name: string;
-}
-
-export interface IRouteItemData extends IRouteItem {
-    Component: React.FC<IPageProps>;
+    [key: string]: string;
 }
 
 export interface IWorkItem {
     name: string;
-    shortname: string;
+    client: string;
+    image: string;
+    logo: string;
     year: number;
     agency: string;
-    desc: string;
     link: string;
-    media: string;
     tech: string[];
 }
 
 export interface IAppData {
     info: IInfo;
     social: ISocialItem[];
-    routes: IRouteItemData[];
+    routes: IRouteItem;
     skills: string[];
     work: IWorkItem[];
 }
@@ -75,34 +68,42 @@ const data: IAppData = {
             link: 'https://twitter.com/poolestephen'
         }
     ],
-    routes: [
-        {
-            path: '/about',
-            name: 'About',
-            Component: About
-        },
-        {
-            path: '/work',
-            name: 'Work',
-            Component: Work
-        },
-        {
-            path: '/contact',
-            name: 'Contact',
-            Component: Contact
-        }
-    ],
-    skills: ['React', 'Redux', 'Typescript', 'ES6', 'Sass', 'Webpack', 'Mocha', 'C#', 'Node'],
+    routes: {
+        about: 'about',
+        work: 'work',
+        contact: 'contact'
+    },
+    skills: ['React', 'Redux', 'Typescript', 'ES6', 'Sass', 'Webpack', 'Mocha', '.NET', 'Node'],
     work: [
         {
-            name: '',
-            shortname: '',
-            year: 0,
-            agency: '',
-            desc: '',
-            link: '',
-            media: '',
-            tech: ['']
+            name: 'MINI Configurator',
+            client: 'MINI',
+            logo: 'logo-mini.png',
+            image: 'work-mini.jpg',
+            year: 2018,
+            agency: 'Richmond Day',
+            link: 'https://mini.ca/en/shopping/buildandprice',
+            tech: ['React', 'MobX', 'Webpack', 'Sass']
+        },
+        {
+            name: 'Find My Whirlpool',
+            client: 'Whirlpool',
+            logo: 'logo-whirlpool.png',
+            image: 'work-whirlpool.jpg',
+            year: 2016,
+            agency: 'Red Lion Canada',
+            link: 'http://findmy.whirlpool.ca',
+            tech: ['AngularJS', 'Gulp', 'Sass']
+        },
+        {
+            name: 'Website on Vinyl',
+            client: 'Just Tom',
+            logo: 'logo-justtom.png',
+            image: 'work-justtom.jpg',
+            year: 2017,
+            agency: 'Red Lion Canada',
+            link: 'https://justtom.ca',
+            tech: ['React', 'Webpack', 'Sass']
         }
     ]
 };
@@ -110,7 +111,7 @@ const data: IAppData = {
 export class AppDataClass implements IAppData {
     public info: IInfo;
     public social: ISocialItem[];
-    public routes: IRouteItemData[];
+    public routes: IRouteItem;
     public skills: string[];
     public work: IWorkItem[];
 

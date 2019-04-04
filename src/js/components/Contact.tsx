@@ -341,7 +341,7 @@ const Wrapper = styled.div`
 `;
 
 export const Contact: React.FC<IPageProps> = ({ route }) => (
-    <Page id={route.name}>
+    <Page id={route}>
         <StyledTitle visible={76}>Contact</StyledTitle>
         <Wrapper>
             <ContentSection underlined={false}>

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HashLink as Link } from 'react-router-hash-link';
-import { A, StyledTitle, Page, ContentSection, Spacer } from './index';
+import { StyledTitle, Page, ContentSection, Spacer, HashLink } from './index';
 import { AppData, IPageProps } from '../util/index';
 
 const Wrapper = styled.div`
@@ -9,12 +8,13 @@ const Wrapper = styled.div`
 `;
 
 export const About: React.FC<IPageProps> = ({ route }) => (
-    <Page id={route.name}>
+    <Page id={route}>
         <StyledTitle visible={76}>About</StyledTitle>
         <Wrapper>
             <ContentSection>
                 <p>
                     Stephen Poole is a senior Front-End developer based in Toronto, Canada.
+                    <br />
                     <br />
                     He’s worked with brands such as American Standard, BMW, Cadillac, Cisco,
                     Kitchenaid, Maytag, MINI, Samsung, Subaru, Whirlpool, and more.
@@ -33,14 +33,7 @@ export const About: React.FC<IPageProps> = ({ route }) => (
                 <p>New opportunities are always welcome.</p>
                 <p>
                     <strong>
-                        <Link
-                            scroll={element =>
-                                element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                            }
-                            to={'/#Contact'}
-                        >
-                            {AppData.info.email}
-                        </Link>
+                        <HashLink to={AppData.routes.contact}>{AppData.info.email}</HashLink>
                     </strong>
                 </p>
             </ContentSection>

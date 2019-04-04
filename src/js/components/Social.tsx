@@ -1,8 +1,7 @@
-import React, { ReactChildren, ReactPortal, ReactNode } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { HashLink as Link } from 'react-router-hash-link';
-import { A } from './index';
-import { ISocialItem } from '../util';
+import { A, HashLink } from './index';
+import { ISocialItem, AppData } from '../util';
 
 const SocialWrapper = styled.ul`
     position: absolute;
@@ -33,16 +32,7 @@ export const Social: React.FC<IProps> = ({ items }) => (
             `;
             const CustomLink: React.FC<{}> = ({ children }) => {
                 if (name === 'email') {
-                    return (
-                        <Link
-                            scroll={element =>
-                                element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                            }
-                            to={'/#Contact'}
-                        >
-                            {children}
-                        </Link>
-                    );
+                    return <HashLink to={AppData.routes.contact}>{children}</HashLink>;
                 }
 
                 return <A href={link}>{children}</A>;

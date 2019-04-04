@@ -73,3 +73,14 @@ export const Dots: React.FC<Props> = ({ className }) => (
         </svg>
     </Colorized>
 );
+
+export const Arrow: React.FC<Props> = ({ className }) => (
+    <Colorized className={className}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.94 7.11">
+            <path
+                d="M443.13,376l-.25.25a.42.42,0,0,0,0,.6l3,2H417.49a.43.43,0,0,0-.43.43v.35a.43.43,0,0,0,.43.43h28.37l-3,2a.42.42,0,0,0,0,.6l.25.25a.42.42,0,0,0,.6,0l4.14-3.12a.43.43,0,0,0,0-.61L443.73,376A.42.42,0,0,0,443.13,376Z"
+                transform="translate(-417.06 -375.89)"
+            />
+        </svg>
+    </Colorized>
+);
