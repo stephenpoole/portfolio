@@ -12,7 +12,7 @@ export const About: React.FC<IPageProps> = ({ route }) => (
                     Stephen Poole is a senior Front-End developer based in Toronto, Canada.
                     <br />
                     <br />
-                    He’s worked with brands such as American Standard, BMW, Cadillac, Cisco,
+                    He&apos;s worked with brands such as American Standard, BMW, Cadillac, Cisco,
                     Kitchenaid, Maytag, MINI, Samsung, Subaru, Whirlpool, and more.
                 </p>
             </ContentSection>
