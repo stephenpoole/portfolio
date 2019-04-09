@@ -1,7 +1,6 @@
 import React from 'react';
-import styled, { StyledComponent } from 'styled-components';
-import { withRouter, Link } from 'react-router-dom';
-import { Image, A, Logo, Navigation, Social } from './index';
+import styled from 'styled-components';
+import { Logo, Navigation, Social } from './index';
 import { ISocialItem, IRouteItem, IInfo } from '../util';
 
 const MenuWrapper = styled.div`
@@ -14,7 +13,7 @@ const MenuWrapper = styled.div`
 
 interface Props {
     social: ISocialItem[];
-    routes: IRouteItem[];
+    routes: IRouteItem;
     info: IInfo;
 }
 

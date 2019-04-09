@@ -1,24 +1,33 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { Normalize } from 'styled-normalize';
 import * as Util from './util/index';
 import { theme, GlobalStyle } from './styles/index';
-import { Routes } from './Constants';
-import { SidebarContainer, ContentContainer, Menu, Book } from './components/index';
+import {
+    SidebarContainer,
+    ContentContainer,
+    Menu,
+    Book,
+    TweenColorsViaScroll,
+    About,
+    Work,
+    Contact
+} from './components/index';
 
 const AppWrapper = styled.div`
     width: 100%;
-    height: 100%;
     position: relative;
+    color: ${({ theme }) => theme.color.text};
+    background: ${({ theme }) => theme.color.background};
 `;
 
 export const App: React.FC<{}> = () => (
     <ThemeProvider theme={theme}>
-        <AppWrapper>
-            <Normalize />
-            <GlobalStyle />
-            <Router>
+        <>
+            <TweenColorsViaScroll />
+            <AppWrapper>
+                <Normalize />
+                <GlobalStyle />
                 <>
                     <SidebarContainer>
                         <Menu
@@ -29,21 +38,13 @@ export const App: React.FC<{}> = () => (
                     </SidebarContainer>
                     <ContentContainer>
                         <Book>
-                            {Util.AppData.routes.map(
-                                ({ name, path, Component }: Util.IRouteItemData) => {
-                                    return <Component key={path} route={{ name, path }} />;
-                                }
-                            )}
-                            <Switch>
-                                <Route path={Routes.Work} />
-                                <Route path={Routes.Contact} />
-                                <Route path={Routes.About} />
-                                <Redirect to={Routes.About} />
-                            </Switch>
+                            <About route={Util.AppData.routes.about} />
+                            <Work route={Util.AppData.routes.work} />
+                            <Contact route={Util.AppData.routes.contact} />
                         </Book>
                     </ContentContainer>
                 </>
-            </Router>
-        </AppWrapper>
+            </AppWrapper>
+        </>
     </ThemeProvider>
 );

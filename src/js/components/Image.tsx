@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Config } from '../util/index';
 
 interface Props {
@@ -11,5 +11,5 @@ const StyledImg = styled.img`
 `;
 
 export const Image: React.FC<Props> = ({ src, ...props }) => (
-    <StyledImg {...props} src={`${Config.imagePrefix}${src}`} />
+    <StyledImg {...props} src={`${Config.imagePrefix}/${src}`} />
 );

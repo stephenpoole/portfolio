@@ -1,10 +1,14 @@
 import React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 
 export const SidebarWrapper = styled.div`
     float: left;
     height: 100%;
     width: 100px;
+
+    ${({ theme }) => theme.media.phone} {
+        width: 70px;
+    }
 `;
 
 interface Props {

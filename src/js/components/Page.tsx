@@ -14,11 +14,12 @@ export const StyledPage = styled.li`
     border: ${({ theme }) => `${theme.misc.lineWidth}px solid ${theme.color.text}`};
     width: calc(100% - 100px);
 
+    ${({ theme }) => theme.media.desktop} {
+        width: calc(100% - 20px);
+    }
+
     &:last-child {
         border-bottom: none;
-    }
-    &:first-child {
-        margin-top: 60px;
     }
 `;
 
@@ -30,8 +31,12 @@ const Anchor = styled.div<AnchorProps>`
     position: absolute;
     height: 1px;
     width: 100%;
-    top: -150px;
+    top: -110px;
     left: 0;
+
+    ${({ theme }) => theme.media.phone} {
+        top: -80px;
+    }
 `;
 
 export const Page: React.FC<Props> = ({ id, children }) => (

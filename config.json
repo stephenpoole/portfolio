@@ -1,10 +1,16 @@
 {
     "production": {
         "routePrefix": "/",
-        "imagePrefix": "/assets/images"
+        "imagePrefix": "/assets/images",
+        "api": "https://api.stephen.work",
+        "emailBodyLimit": 510,
+        "emailLimit": 55
     },
     "development": {
         "routePrefix": "/pf/dist",
-        "imagePrefix": "/pf/dist/assets/images"
+        "imagePrefix": "/pf/dist/assets/images",
+        "api": "http://localhost:3000",
+        "emailBodyLimit": 510,
+        "emailLimit": 55
     }
 }

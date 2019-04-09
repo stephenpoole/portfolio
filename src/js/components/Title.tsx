@@ -6,6 +6,11 @@ const TitleText = styled.h1`
     font-weight: bold;
     font-size: 10em;
     letter-spacing: -8px;
+
+    ${({ theme }) => theme.media.phone} {
+        font-size: 5em;
+        letter-spacing: -5px;
+    }
 `;
 
 const AnchoredTitleText = styled(TitleText)`
@@ -47,4 +52,8 @@ export const StyledTitle = styled(Title)`
     position: absolute;
     top: -135px;
     left: 20px;
+
+    ${({ theme }) => theme.media.phone} {
+        top: -55px;
+    }
 `;

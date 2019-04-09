@@ -27,6 +27,7 @@ module.exports = function(env, argv) {
             { from: 'src/assets/fonts', to: 'assets/fonts' },
             { from: 'src/assets/images', to: 'assets/images' },
             { from: 'src/assets/videos', to: 'assets/videos' },
+            { from: 'src/assets/favicon', to: '' },
             { from: 'src/.htaccess', to: '' }
         ])
     ];

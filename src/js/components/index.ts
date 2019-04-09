@@ -14,6 +14,9 @@ export { Navigation } from './Navigation';
 export { Social } from './Social';
 export { Content } from './Content';
 export { ContentSection } from './ContentSection';
+export { ScrollTracker } from './ScrollTracker';
+export { PageInner } from './PageInner';
+export { TweenColorsViaScroll } from './TweenColorsViaScroll';
 
 export { About } from './About';
 export { Work } from './Work';
@@ -21,3 +24,4 @@ export { Contact } from './Contact';
 export { SidebarContainer } from './SidebarContainer';
 export { Sidebar } from './Sidebar';
 export { ContentContainer } from './ContentContainer';
+export { HashLink } from './HashLink';

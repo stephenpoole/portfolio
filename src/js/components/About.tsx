@@ -1,19 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
-import { A, StyledTitle, Page, ContentSection, Spacer } from './index';
+import { StyledTitle, Page, ContentSection, Spacer, HashLink } from './index';
 import { AppData, IPageProps } from '../util/index';
-
-const Wrapper = styled.div`
-    padding: 140px 150px;
-`;
+import { PageInner } from './PageInner';
 
 export const About: React.FC<IPageProps> = ({ route }) => (
-    <Page id={route.name}>
+    <Page id={route}>
         <StyledTitle visible={76}>About</StyledTitle>
-        <Wrapper>
+        <PageInner>
             <ContentSection>
                 <p>
                     Stephen Poole is a senior Front-End developer based in Toronto, Canada.
+                    <br />
                     <br />
                     He’s worked with brands such as American Standard, BMW, Cadillac, Cisco,
                     Kitchenaid, Maytag, MINI, Samsung, Subaru, Whirlpool, and more.
@@ -32,11 +29,11 @@ export const About: React.FC<IPageProps> = ({ route }) => (
                 <p>New opportunities are always welcome.</p>
                 <p>
                     <strong>
-                        <A href={`mailto:${AppData.info.email}`}>{AppData.info.email}</A>
+                        <HashLink to={AppData.routes.contact}>{AppData.info.email}</HashLink>
                     </strong>
                 </p>
             </ContentSection>
             <Spacer height={1000} count={20} />
-        </Wrapper>
+        </PageInner>
     </Page>
 );

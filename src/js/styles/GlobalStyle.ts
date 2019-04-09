@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { theme } from './index';
-import { Config } from '../util/index';
+import { Config } from '../util/Config';
 
 export const GlobalStyle = createGlobalStyle`
     @font-face {
@@ -29,14 +29,16 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        color: ${theme.color.text};
-        background: ${theme.color.background};
         margin: 0;
         padding: 0;
         font-family: ${theme.font.sans};
         font-size: 12pt;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+
+        ${theme.media.phone} {
+            font-size: 9pt;
+        }
     }
 
     html, body, div, span, applet, object, iframe,

@@ -1,9 +1,10 @@
-import { Color } from '../util/index';
+import { Color } from '../util/Color';
 import { Hex } from '../Hex';
 
 interface IColor {
     text: string;
     background: string;
+    pairs: Hex[][];
 }
 
 interface IFont {
@@ -20,6 +21,7 @@ interface IMedia {
 
 interface IMisc {
     lineWidth: number;
+    inputPadding: number;
 }
 
 export interface ITheme {
@@ -29,13 +31,15 @@ export interface ITheme {
     misc: IMisc;
 }
 
-const textColor: Hex = Color.randomizeHue(new Hex('a53b3b'));
-const backgroundColor: Hex = Color.randomizeHue(new Hex('3a1212'), textColor);
+const pairs: Hex[][] = [0, 0, 0].map(() =>
+    Color.generatePair(new Hex('a53b3b'), new Hex('3a1212'))
+);
 
 export const theme: ITheme = {
     color: {
-        text: textColor.toString(),
-        background: backgroundColor.toString()
+        text: pairs[0][0].toString(),
+        background: pairs[0][1].toString(),
+        pairs
     },
     font: {
         size: 16,
@@ -43,11 +47,12 @@ export const theme: ITheme = {
         serif: 'AbrilFatface-Regular, Times New Roman, serif'
     },
     media: {
-        phone: '(max-width: 414px)',
-        tablet: '(max-width: 768px)',
-        desktop: '(max-width: 1400px)'
+        phone: '@media(max-width: 414px)',
+        tablet: '@media(max-width: 768px)',
+        desktop: '@media(max-width: 1022px)'
     },
     misc: {
-        lineWidth: 6
+        lineWidth: 6,
+        inputPadding: 10
     }
 };

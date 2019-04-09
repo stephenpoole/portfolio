@@ -1,7 +1,7 @@
 import React from 'react';
-import styled, { StyledComponent } from 'styled-components';
-import { A } from './index';
-import { ISocialItem } from '../util';
+import styled from 'styled-components';
+import { A, HashLink } from './index';
+import { ISocialItem, AppData } from '../util';
 
 const SocialWrapper = styled.ul`
     position: absolute;
@@ -16,11 +16,11 @@ const SocialItem = styled.li`
     }
 `;
 
-interface Props {
+interface IProps {
     items: ISocialItem[];
 }
 
-export const Social: React.FC<Props> = ({ items }) => (
+export const Social: React.FC<IProps> = ({ items }) => (
     <SocialWrapper>
         {Object.values(items).map(({ Component, link, name }) => {
             const Svg = styled(Component)`
@@ -29,12 +29,24 @@ export const Social: React.FC<Props> = ({ items }) => (
                 padding: 17px 0;
                 display: block;
                 fill: ${({ theme }) => theme.color.text};
+
+                ${({ theme }) => theme.media.phone} {
+                    width: 20px;
+                }
             `;
+            const CustomLink: React.FC<{}> = ({ children }) => {
+                if (name === 'email') {
+                    return <HashLink to={AppData.routes.contact}>{children}</HashLink>;
+                }
+
+                return <A href={link}>{children}</A>;
+            };
+
             return (
                 <SocialItem key={name}>
-                    <A href={link}>
+                    <CustomLink>
                         <Svg />
-                    </A>
+                    </CustomLink>
                 </SocialItem>
             );
         })}

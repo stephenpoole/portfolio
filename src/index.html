@@ -2,10 +2,50 @@
     <head>
         <meta name="charset" content="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <title></title>
+        <meta
+            name="description"
+            content="Stephen Poole is a senior Front-End developer based in Toronto, Canada. He’s worked with brands such as American Standard, BMW, Cadillac, Cisco,
+        Kitchenaid, Maytag, MINI, Samsung, Subaru, Whirlpool, and more."
+        />
+        <meta name="robots" content="index, follow" />
+        <title>Stephen Poole | Senior Front-End Developer</title>
         <base href="<%= htmlWebpackPlugin.options.baseUrl %>" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="<%= htmlWebpackPlugin.options.baseUrl %>/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="<%= htmlWebpackPlugin.options.baseUrl %>/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="<%= htmlWebpackPlugin.options.baseUrl %>/favicon-16x16.png"
+        />
+        <link rel="manifest" href="<%= htmlWebpackPlugin.options.baseUrl %>/site.webmanifest" />
+        <link
+            rel="mask-icon"
+            href="<%= htmlWebpackPlugin.options.baseUrl %>/safari-pinned-tab.svg"
+            color="#303030"
+        />
+        <meta name="msapplication-TileColor" content="#b91d47" />
+        <meta name="theme-color" content="#ffffff" />
     </head>
     <body>
         <div id="app"></div>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130941757-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-130941757-3');
+        </script>
     </body>
 </html>
