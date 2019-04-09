@@ -35,6 +35,10 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 12pt;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+
+        ${theme.media.phone} {
+            font-size: 9pt;
+        }
     }
 
     html, body, div, span, applet, object, iframe,

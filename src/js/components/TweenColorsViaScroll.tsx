@@ -16,8 +16,8 @@ export const TweenColorsViaScroll: React.FC<{}> = () => {
                     const text = textTween.getColor(progress);
                     const background = backgroundTween.getColor(progress);
 
-                    theme.color.text = text;
-                    theme.color.background = background;
+                    // theme.color.text = text;
+                    // theme.color.background = background;
                 });
 
                 return <div />;

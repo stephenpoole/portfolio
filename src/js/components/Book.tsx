@@ -12,4 +12,8 @@ export const Book = styled.ul`
         transform: none;
         left: initial;
     }
+
+    ${({ theme }) => theme.media.phone} {
+        padding-top: 80px;
+    }
 `;

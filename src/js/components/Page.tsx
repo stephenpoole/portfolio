@@ -33,6 +33,10 @@ const Anchor = styled.div<AnchorProps>`
     width: 100%;
     top: -110px;
     left: 0;
+
+    ${({ theme }) => theme.media.phone} {
+        top: -80px;
+    }
 `;
 
 export const Page: React.FC<Props> = ({ id, children }) => (

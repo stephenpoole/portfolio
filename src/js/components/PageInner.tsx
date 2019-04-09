@@ -7,4 +7,8 @@ export const PageInner = styled.div`
     ${({ theme }) => theme.media.tablet} {
         padding: 130px 90px;
     }
+
+    ${({ theme }) => theme.media.phone} {
+        padding: 60px 40px;
+    }
 `;

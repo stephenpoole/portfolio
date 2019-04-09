@@ -29,6 +29,10 @@ export const Social: React.FC<IProps> = ({ items }) => (
                 padding: 17px 0;
                 display: block;
                 fill: ${({ theme }) => theme.color.text};
+
+                ${({ theme }) => theme.media.phone} {
+                    width: 20px;
+                }
             `;
             const CustomLink: React.FC<{}> = ({ children }) => {
                 if (name === 'email') {

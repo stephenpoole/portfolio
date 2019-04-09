@@ -35,4 +35,9 @@ export const ContentSection = styled.div<IProps>`
     &:last-child {
         margin-bottom: 0;
     }
+
+    ${({ theme }) => theme.media.phone} {
+        font-size: 12pt;
+        line-height: 29px;
+    }
 `;

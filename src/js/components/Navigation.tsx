@@ -26,6 +26,10 @@ const StyledLink = styled(HashLink)`
     width: inherit;
     display: table;
     text-transform: capitalize;
+
+    ${({ theme }) => theme.media.phone} {
+        padding: 20px 0;
+    }
 `;
 
 const StyledSpan = styled.span`
@@ -37,6 +41,10 @@ const StyledSpan = styled.span`
     strong {
         display: block;
         text-align: center;
+    }
+
+    ${({ theme }) => theme.media.phone} {
+        min-height: 50px;
     }
 `;
 
