@@ -1,6 +1,6 @@
 {
     "production": {
-        "routePrefix": "/",
+        "routePrefix": "",
         "imagePrefix": "/assets/images",
         "api": "https://api.stephen.work",
         "emailBodyLimit": 510,
