@@ -7,7 +7,7 @@ interface IProps {
 
 export const ContentSection = styled.div<IProps>`
     font-size: 14pt;
-    margin: 80px 0;
+    margin: 50px 0;
     line-height: 34px;
     position: relative;
 
