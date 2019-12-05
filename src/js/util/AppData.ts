@@ -61,11 +61,6 @@ const data: IAppData = {
             name: 'linkedin',
             Component: Svg.LinkedIn,
             link: 'https://www.linkedin.com/in/stephenwpoole'
-        },
-        {
-            name: 'twitter',
-            Component: Svg.Twitter,
-            link: 'https://twitter.com/poolestephen'
         }
     ],
     routes: {
@@ -73,8 +68,28 @@ const data: IAppData = {
         work: 'work',
         contact: 'contact'
     },
-    skills: ['React', 'Redux', 'Typescript', 'ES6', 'Sass', 'Webpack', 'Mocha', '.NET', 'Node'],
+    skills: [
+        'React',
+        'Redux',
+        'Typescript',
+        'ESNext',
+        'Styled Components',
+        'Webpack',
+        'Jest',
+        'Next.js',
+        'Node.js'
+    ],
     work: [
+        {
+            name: 'Ashley Madison',
+            client: 'Ruby',
+            logo: 'logo-ruby.png',
+            image: 'work-ashleymadison.jpg',
+            year: 2019,
+            agency: 'Ruby',
+            link: 'https://ashleymadison.com',
+            tech: ['React', 'Redux', 'Typescript', 'Styled Components']
+        },
         {
             name: 'MINI Configurator',
             client: 'MINI',
