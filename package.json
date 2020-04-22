@@ -59,8 +59,8 @@
     },
     "dependencies": {
         "color-convert": "^2.0.0",
-        "react": "^16.8.5",
-        "react-dom": "^16.8.3",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
         "styled-components": "^4.1.12",
         "styled-normalize": "8.0.6",
         "whatwg-fetch": "^3.0.0"
