@@ -7,8 +7,8 @@
         "emailLimit": 55
     },
     "development": {
-        "routePrefix": "/pf/dist",
-        "imagePrefix": "/pf/dist/assets/images",
+        "routePrefix": "/portfolio/dist",
+        "imagePrefix": "/portfolio/dist/assets/images",
         "api": "http://localhost:3000",
         "emailBodyLimit": 510,
         "emailLimit": 55

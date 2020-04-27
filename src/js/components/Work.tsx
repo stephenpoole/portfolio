@@ -72,7 +72,7 @@ export const Work: React.FC<IPageProps> = ({ route }) => (
                     </A>
                 </StyledContentSection>
             ))}
-            <Spacer height={1000} count={20} />
+            <Spacer height={100} count={20} />
         </PageInner>
     </Page>
 );
